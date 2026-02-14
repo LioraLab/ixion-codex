@@ -29,6 +29,13 @@ metadata:
 3. 추천안 1개를 제시하되, 트레이드오프를 같이 명시한다
 4. 다음 액션으로 “어떤 익션으로 구현/수정/검증할지”를 추천한다
 
+## 출력 형식(고정)
+- Observations (fact only)
+- Root Cause Candidates (1-3개, confidence 표기)
+- Recommendation (추천 1개 + tradeoff)
+- Evidence (파일 경로/근거)
+- Next Action (추천 ixion 스킬 1개)
+
 ## 다음 액션 라우팅(권장)
 - 실제 수정/구현까지: `$ixion-orchestrator`
 - 빌드/타입 에러 최소 수정: `$ixion-build-fix`
