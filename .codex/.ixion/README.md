@@ -33,6 +33,7 @@
 ## 익션 목록
 - `$ixion`: 허브(라우터)
 - `$ixion-prompt`: ixion을 잘 타도록 "작업 프롬프트(요청문)"를 생성
+- `$find-skills`: 설치 가능한 스킬을 검색/설치해 기능을 확장(`npx skills find/add`)
 - `$ixion-bkit-system`: bkit 플러그인 맵(templates/skills/agents/hooks/scripts/system 네비게이션)
 - `$ixion-development-pipeline`: 9-Phase 개발 파이프라인(뭐부터/순서/다음 단계)
 - `$ixion-zero-script-qa`: 테스트 코드 없이 로그 기반 QA(구조화 로그/모니터링)

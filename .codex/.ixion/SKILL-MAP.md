@@ -21,6 +21,7 @@
 |내가 말하는 의도(키워드)|주 익션(Primary)|동반 익션(조건부, 필요할 때만)|비고|
 |---|---|---|---|
 |프롬프트/요청문/템플릿 만들어줘|`$ixion-prompt`|`$ixion`|프롬프트 생성 전용(코드 수정 아님).|
+|스킬 찾아줘/기능 확장/설치 가능한 스킬이 있나?|`$find-skills`|-|`npx skills find/add`로 공개 스킬 생태계에서 탐색/설치.|
 |계획/요구사항/범위 합의/스펙 정리|`$ixion-pdca`|`$ixion-orchestrator`|Plan 합의 후 구현 단계로 넘김.|
 |문서(Plan/Design/Analysis/Report) 남기기|`$ixion-pdca`|`$ixion-learn`|문서 템플릿 기반으로 자산화.|
 |“왜 이래?” 원인 분석(코드 변경 없음)|`$ixion-analyze`|`-`|필요하면 Deep Search 모드로 위치/흐름까지 같이.|

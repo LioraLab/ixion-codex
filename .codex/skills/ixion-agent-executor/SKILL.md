@@ -23,6 +23,7 @@ metadata:
 
 주 익션(Primary) 선택:
 - 개발 파이프라인/뭐부터/순서/phase → `$ixion-development-pipeline`
+- 스킬 찾아줘/find skills/기능 확장 → `$find-skills`
 - 빌드/타입/의존성 에러 → `$ixion-build-fix`
 - 코드 위치/흐름 파악(읽기 전용) → `$ixion-analyze` (Deep Search 모드)
 - 원인 분석(코드 변경 없이) → `$ixion-analyze`

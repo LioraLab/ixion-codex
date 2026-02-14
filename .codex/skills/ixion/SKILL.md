@@ -22,6 +22,7 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 
 ## 기본 전략 (추천)
 - 프롬프트(요청문) 생성: `$ixion-prompt`
+- 스킬 확장(설치 가능한 스킬 탐색/설치): `$find-skills`
 - 역할 기반 엔트리포인트(옵트인): 사용자가 “에이전트로/agent mode/agent로”를 **명시**했을 때만 `$ixion-agent-executor`
 - bkit 맵/탐색(선택): `$ixion-bkit-system`
 - 계획/요구사항 수렴(인터뷰/합의형): `$ixion-pdca` (Plan 작성 모드)
@@ -53,6 +54,7 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 요청을 받으면 아래 중 하나로 즉시 라우팅한다(질문은 “지금 안 물으면 실패”할 때만 1-2개).
 - “에이전트로/agent mode/agent로” -> 역할 힌트가 없으면 `$ixion-agent-executor`
 - “프롬프트/prompt/요청문/템플릿” -> `$ixion-prompt`
+- “스킬 찾아줘/find skills/skill 찾아줘/npx skills” -> `$find-skills`
 - “bkit” -> `$ixion-bkit-system`
 - “개발 파이프라인/development pipeline/phase/뭐부터/어디서부터/순서/where to start” -> `$ixion-development-pipeline`
 - “zero script qa/제로 스크립트 QA/로그 기반 QA/로그로 검증” -> `$ixion-zero-script-qa`
