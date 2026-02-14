@@ -1,0 +1,17 @@
+{
+  "project": {
+    "ixion-codex": {
+      "notebook_id": "c50d8a9e-cdc6-44df-8e38-337aca318165",
+      "title": "ixion-codex",
+      "purpose": "ixion-codex 레포/익션 자체에 대한 지식(스킬맵/라우팅/플러그인 매핑/운영 규칙) 축적"
+    }
+  },
+  "personal": {
+    "assistant_memory": {
+      "notebook_id": "b55e441a-295e-4b80-8818-e05f75cdba31",
+      "title": "Assistant Memory",
+      "purpose": "사용자 개인 선호/금지 패턴/결정(프로젝트 공통) 장기 기억"
+    }
+  }
+}
+

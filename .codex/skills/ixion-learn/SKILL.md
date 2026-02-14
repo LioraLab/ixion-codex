@@ -1,6 +1,6 @@
 ---
 name: ixion-learn
-description: 작업에서 얻은 패턴/결정을 자산화하는 익션. 재사용 가능한 규칙을 `.codex/.ixion`과 NotebookLM Assistant Memory에 기록한다.
+description: 작업에서 얻은 패턴/결정을 자산화하는 익션. 재사용 가능한 규칙을 `.codex/.ixion`과 NotebookLM(프로젝트: ixion-codex / 개인: Assistant Memory)에 기록한다.
 metadata:
   short-description: Continuous learning + memory
 ---
@@ -22,7 +22,12 @@ metadata:
 
 ## 저장 위치
 - 로컬: `.codex/.ixion/decisions.md`에 요약 기록
-- 장기 기억: NotebookLM `Assistant Memory`에 노트로 기록
+- 프로젝트 지식: NotebookLM `ixion-codex`에 노트로 기록(이 레포 전용 지식)
+- 개인 장기 기억: NotebookLM `Assistant Memory`에 노트로 기록(프로젝트 공통 선호/금지 패턴)
+
+원칙:
+- “ixion-codex 레포/익션 자체”에 대한 규칙/운영/패턴이면 -> `ixion-codex`
+- “사용자 개인 선호/금지/습관(프로젝트를 넘어 재사용)”이면 -> `Assistant Memory`
 
 ## 형식 (5-10줄)
 - 주제:

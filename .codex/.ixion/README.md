@@ -20,6 +20,16 @@
   - 또는 플러그인별 `git pull` 후 `bash .codex/.ixion/scripts/sync-from-plugins.sh`
 - 현재 스냅샷: `.codex/.ixion/PLUGIN-VERSIONS.md`
 
+## 한눈에 고르기(추천)
+익션을 “어떤 걸로 시작해야 하지?”가 애매할 때는 아래 문서를 먼저 본다.
+
+- 스킬 선택표(치트시트): `.codex/.ixion/SKILL-MAP.md`
+
+## NotebookLM (지식 축적)
+- 프로젝트 지식 베이스(이 레포 전용): `ixion-codex` (Notebook ID: `c50d8a9e-cdc6-44df-8e38-337aca318165`)
+  - 익션/스킬/에이전트/플러그인 이식/운영 방식은 앞으로 이 노트북에 축적한다.
+- 개인 장기 기억(프로젝트 공통): `Assistant Memory` (Notebook ID: `b55e441a-295e-4b80-8818-e05f75cdba31`)
+
 ## 익션 목록
 - `$ixion`: 허브(라우터)
 - `$ixion-prompt`: ixion을 잘 타도록 "작업 프롬프트(요청문)"를 생성

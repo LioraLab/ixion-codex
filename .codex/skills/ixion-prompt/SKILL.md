@@ -38,6 +38,7 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
 
 - 세션 컨텍스트에 “Available skills” 목록이 제공되면, 그 목록을 기준으로만 스킬명을 선택한다(존재하지 않는 스킬명 발명 금지).
 - 목록이 없거나 확신이 없으면 아래 파일을 우선 확인해 라우팅을 맞춘다.
+  - 한눈에 선택표(치트시트): `.codex/.ixion/SKILL-MAP.md`
   - 허브 라우팅: `.codex/skills/ixion/SKILL.md`
   - 전체 매핑/벤더링: `.codex/.ixion/PLUGINS.md`
   - 사용자용 인덱스: `.codex/.ixion/README.md`
