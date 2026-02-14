@@ -32,6 +32,16 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
 - (작은 diff) 스코프 확장(김에 수정) 금지.
 - (검증) 완료 선언 전에 최소 1개(테스트/빌드/린트/타입체크/스모크) 실행을 프롬프트에 포함한다.
 
+## Skill Awareness (중요)
+
+`ixion-prompt`는 “미리 적어둔 치트시트”를 참고하되, **실제 사용 가능한 스킬 목록을 소스 오브 트루스로** 취급한다.
+
+- 세션 컨텍스트에 “Available skills” 목록이 제공되면, 그 목록을 기준으로만 스킬명을 선택한다(존재하지 않는 스킬명 발명 금지).
+- 목록이 없거나 확신이 없으면 아래 파일을 우선 확인해 라우팅을 맞춘다.
+  - 허브 라우팅: `.codex/skills/ixion/SKILL.md`
+  - 전체 매핑/벤더링: `.codex/.ixion/PLUGINS.md`
+  - 사용자용 인덱스: `.codex/.ixion/README.md`
+
 ## Ixion 기능 맵 (Cheat Sheet)
 
 - 기본 규칙/가드레일: `$ixion-core`
@@ -153,6 +163,12 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
    - 완료 전 최소 1개 검증 -> `$ixion-verify` (사실상 기본값)
    - 변경 후 회귀/테스트 공백 확인 -> `$ixion-review` (권장)
    - 재사용 규칙/결정이 생김 -> `$ixion-learn` (권장)
+   - bkend 관련이면(필요할 때만):
+     - 초기 설정/연결/개념 -> `$ixion-bkend-quickstart`
+     - 인증/RBAC/RLS -> `$ixion-bkend-auth`
+     - 테이블/CRUD/필터/페이지네이션 -> `$ixion-bkend-data`
+     - 파일 업로드/스토리지 -> `$ixion-bkend-storage`
+     - 예제/트러블슈팅 -> `$ixion-bkend-cookbook`
 5. (질문) “지금 안 물으면 실패”할 질문 1-2개만 포함한다.
 6. 아래 템플릿 중 "주 익션"에 해당하는 1개를 골라, 그대로 붙여넣기 가능한 프롬프트로 완성한다.
 
@@ -778,6 +794,102 @@ $ixion-zero-script-qa
 요청:
 - 구조화 로그(JSON) 기준과 request_id 추적 기준을 제안하고,
 - 실제 로그 모니터링 커맨드와 “이슈를 어떻게 문서화할지” 템플릿까지 만들어줘.
+```
+
+### Starter (초보/정적 웹 시작)
+
+```text
+$ixion-starter
+
+목적:
+- <어떤 사이트/페이지를 왜 만들지 1-2줄>
+
+주 익션 선택 이유:
+- <왜 지금은 Starter 레벨(단순화/완주)이 최적인지 1-2줄>
+
+범위(In scope):
+- <페이지/섹션/기능(연락 폼 등)>
+
+범위(Out of scope):
+- <로그인/결제/관리자 등 이번엔 제외>
+
+가드레일:
+- 과한 스택/과한 설계 금지(완주 우선)
+- 지금 안 물으면 실패할 질문만 1-2개
+
+성공조건(관찰 가능하게):
+- (UX) 모바일/데스크톱에서 깨지지 않음
+- (검증) 최소 1개 빌드/린트/스모크 PASS
+
+요청:
+- <Starter 작업 요청 원문>
+```
+
+### Dynamic (bkend.ai 기반 풀스택)
+
+```text
+$ixion-dynamic
+
+목적:
+- <왜 bkend 기반 풀스택이 필요한지 1-2줄>
+
+주 익션 선택 이유:
+- <왜 지금은 서버 운영 대신 BaaS로 빠르게 붙이는 게 최적인지 1-2줄>
+
+필요 기능:
+- 인증: <예/아니오> (예: 이메일/소셜/매직링크)
+- 데이터: <테이블/도메인 모델>
+- 파일: <예/아니오> (예: 이미지 업로드)
+
+동반 익션(조건부, 필요할 때만):
+- 초기 설정/연결 -> `$ixion-bkend-quickstart`
+- 인증 -> `$ixion-bkend-auth`
+- 데이터 -> `$ixion-bkend-data`
+- 파일 -> `$ixion-bkend-storage`
+- 완료 전 검증 -> `$ixion-verify`
+
+요청:
+- <Dynamic(bkend) 작업 요청 원문>
+```
+
+### Enterprise (운영/인프라 전제)
+
+```text
+$ixion-enterprise
+
+목적:
+- <왜 엔터프라이즈 전제가 필요한지(트래픽/규모/운영/컴플라이언스) 1-2줄>
+
+주 익션 선택 이유:
+- <왜 지금은 MVP보다 운영/확장/보안 설계가 선행돼야 하는지 1-2줄>
+
+가드레일:
+- 변경은 작은 diff로 쪼개기
+- 보안/권한/데이터 변경은 사전 합의(Plan/Design) 우선
+
+동반 익션(조건부):
+- 계획/합의가 먼저면 `$ixion-plan` 또는 `$ixion-pdca`
+- 배포/롤백 패턴이면 `$ixion-deployment-patterns`
+- 보안 점검이면 `$ixion-security`
+
+요청:
+- <Enterprise 작업 요청 원문>
+```
+
+### bkend Quickstart (연결/개념/설정)
+
+```text
+$ixion-bkend-quickstart
+
+목적:
+- <bkend를 왜 쓰는지 1-2줄>
+
+주 익션 선택 이유:
+- <왜 지금은 기능 구현보다 bkend 연결/개념/흐름 고정이 먼저인지 1-2줄>
+
+요청:
+- Codex MCP(`mcp__bkend__*`) 연결 확인(`get_context`)부터 하고,
+- 프로젝트/환경 구조(Org/Project/Env) 기준으로 다음에 할 일을 체크리스트로 제시해줘.
 ```
 
 ### Web
