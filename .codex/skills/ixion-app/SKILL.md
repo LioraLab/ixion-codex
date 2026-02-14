@@ -37,4 +37,4 @@ metadata:
 
 ## 참고(SSOT)
 - ECC rules: `.codex/.ixion/plugins/everything-claude-code/rules/`
-
+- bkit mobile/desktop app guides(참고): `.codex/.ixion/plugins/bkit/skills/mobile-app/SKILL.md`, `.codex/.ixion/plugins/bkit/skills/desktop-app/SKILL.md`

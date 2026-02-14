@@ -8,7 +8,7 @@
 - 개발 과정의 계획/문서화/개발 스킬을 최대한 적용
 
 ## 원문(SSOT) 소스
-- bkit: `.codex/.ixion/plugins/bkit/` (특히 `templates/`)
+- bkit: `.codex/.ixion/plugins/bkit/` (`templates/`, `skills/`, `agents/`, `bkit-system/`)
   - 현재 `.codex/.ixion/templates/`는 bkit 템플릿을 그대로 복사해 사용한다.
 - OMC: `.codex/.ixion/plugins/oh-my-claudecode/` (특히 `skills/`, `agents.codex/`)
 - ECC: `.codex/.ixion/plugins/everything-claude-code/` (특히 `skills/`, `rules/`, `agents/`)
@@ -23,6 +23,18 @@
 ## 익션 목록
 - `$ixion`: 허브(라우터)
 - `$ixion-prompt`: ixion을 잘 타도록 "작업 프롬프트(요청문)"를 생성
+- `$ixion-bkit-system`: bkit 플러그인 맵(templates/skills/agents/hooks/scripts/system 네비게이션)
+- `$ixion-development-pipeline`: 9-Phase 개발 파이프라인(뭐부터/순서/다음 단계)
+- `$ixion-pipeline-phase-*`: Phase별 가이드(1~9)
+- `$ixion-zero-script-qa`: 테스트 코드 없이 로그 기반 QA(구조화 로그/모니터링)
+- `$ixion-starter`: (프리셋) Starter 레벨(초보/정적 웹)
+- `$ixion-dynamic`: (프리셋) Dynamic 레벨(bkend.ai BaaS 중심)
+- `$ixion-enterprise`: (프리셋) Enterprise 레벨(인프라/운영 전제)
+- `$ixion-bkend-quickstart`: bkend.ai 개념/연결/흐름 정리
+- `$ixion-bkend-auth`: bkend 인증/RBAC/RLS 패턴
+- `$ixion-bkend-data`: bkend 테이블/CRUD/필터/페이지네이션 패턴
+- `$ixion-bkend-storage`: bkend 파일 업로드/가시성 패턴
+- `$ixion-bkend-cookbook`: bkend 예제/트러블슈팅
 - `$ixion-plan`: 구현 전에 요구사항/성공조건/검증을 포함한 실행 계획 생성
 - `$ixion-analyze`: 코드 변경 없이 원인 분석(버그/성능/아키텍처/의존성)
 - `$ixion-deepinit`: 계층형 AGENTS.md 생성/갱신(코드베이스 온보딩)

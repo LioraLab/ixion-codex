@@ -18,7 +18,7 @@
 
 ## 2) 익션이 실제로 쓰는 것(매핑)
 
-### 2.1 bkit → 문서/템플릿(PDCA + Pipeline)
+### 2.1 bkit → 문서/템플릿 + 개발 파이프라인/레벨 프리셋 + 에이전트
 
 익션에서 사용하는 형태:
 - **SSOT**: `.codex/.ixion/plugins/bkit/templates/`
@@ -32,6 +32,73 @@
 - `.codex/.ixion/plugins/bkit/templates/analysis.template.md` → `.codex/skills/ixion-pdca/SKILL.md`
 - `.codex/.ixion/plugins/bkit/templates/report.template.md` → `.codex/skills/ixion-pdca/SKILL.md`
 - `.codex/.ixion/plugins/bkit/templates/pipeline/*.template.md` → `.codex/skills/ixion-pdca/SKILL.md`
+
+#### 2.1.1 bkit Skills → ixion 스킬
+
+개발 파이프라인/Phase:
+- `.codex/.ixion/plugins/bkit/skills/development-pipeline/SKILL.md` → `.codex/skills/ixion-development-pipeline/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-1-schema/SKILL.md` → `.codex/skills/ixion-pipeline-phase-1-schema/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-2-convention/SKILL.md` → `.codex/skills/ixion-pipeline-phase-2-convention/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-3-mockup/SKILL.md` → `.codex/skills/ixion-pipeline-phase-3-mockup/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-4-api/SKILL.md` → `.codex/skills/ixion-pipeline-phase-4-api/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-5-design-system/SKILL.md` → `.codex/skills/ixion-pipeline-phase-5-design-system/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-6-ui-integration/SKILL.md` → `.codex/skills/ixion-pipeline-phase-6-ui-integration/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-7-seo-security/SKILL.md` → `.codex/skills/ixion-pipeline-phase-7-seo-security/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-8-review/SKILL.md` → `.codex/skills/ixion-pipeline-phase-8-review/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/phase-9-deployment/SKILL.md` → `.codex/skills/ixion-pipeline-phase-9-deployment/SKILL.md`
+
+Zero Script QA:
+- `.codex/.ixion/plugins/bkit/skills/zero-script-qa/SKILL.md` → `.codex/skills/ixion-zero-script-qa/SKILL.md`
+
+레벨 프리셋(선택):
+- `.codex/.ixion/plugins/bkit/skills/starter/SKILL.md` → `.codex/skills/ixion-starter/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/dynamic/SKILL.md` → `.codex/skills/ixion-dynamic/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/enterprise/SKILL.md` → `.codex/skills/ixion-enterprise/SKILL.md`
+
+bkend.ai(선택):
+- `.codex/.ixion/plugins/bkit/skills/bkend-quickstart/SKILL.md` → `.codex/skills/ixion-bkend-quickstart/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/bkend-auth/SKILL.md` → `.codex/skills/ixion-bkend-auth/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/bkend-data/SKILL.md` → `.codex/skills/ixion-bkend-data/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/bkend-storage/SKILL.md` → `.codex/skills/ixion-bkend-storage/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/bkend-cookbook/SKILL.md` → `.codex/skills/ixion-bkend-cookbook/SKILL.md`
+
+기타(통합/참고):
+- `.codex/.ixion/plugins/bkit/skills/bkit-rules/SKILL.md` → `.codex/skills/ixion-core/SKILL.md` (가드레일 참고)
+- `.codex/.ixion/plugins/bkit/skills/bkit-templates/SKILL.md` → `.codex/skills/ixion-pdca/SKILL.md` (템플릿 경로 참고)
+- `.codex/.ixion/plugins/bkit/skills/code-review/SKILL.md` → `.codex/skills/ixion-review/SKILL.md` (리뷰 관점 참고)
+- `.codex/.ixion/plugins/bkit/skills/mobile-app/SKILL.md`, `.codex/.ixion/plugins/bkit/skills/desktop-app/SKILL.md` → `.codex/skills/ixion-app/SKILL.md` (참고용)
+- `.codex/.ixion/plugins/bkit/skills/claude-code-learning/SKILL.md` → Claude Code 전용(참고만)
+
+#### 2.1.2 bkit Agents → ixion-agent-* (옵트인)
+
+SSOT: `.codex/.ixion/plugins/bkit/agents/*.md`
+
+이식(Agent-as-Skill):
+- `.codex/.ixion/plugins/bkit/agents/bkend-expert.md` → `.codex/skills/ixion-agent-bkend-expert/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/code-analyzer.md` → `.codex/skills/ixion-agent-code-analyzer/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/cto-lead.md` → `.codex/skills/ixion-agent-cto-lead/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/design-validator.md` → `.codex/skills/ixion-agent-design-validator/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/enterprise-expert.md` → `.codex/skills/ixion-agent-enterprise-expert/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/frontend-architect.md` → `.codex/skills/ixion-agent-frontend-architect/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/gap-detector.md` → `.codex/skills/ixion-agent-gap-detector/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/infra-architect.md` → `.codex/skills/ixion-agent-infra-architect/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/pdca-iterator.md` → `.codex/skills/ixion-agent-pdca-iterator/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/pipeline-guide.md` → `.codex/skills/ixion-agent-pipeline-guide/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/product-manager.md` → `.codex/skills/ixion-agent-product-manager/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/qa-monitor.md` → `.codex/skills/ixion-agent-qa-monitor/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/qa-strategist.md` → `.codex/skills/ixion-agent-qa-strategist/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/report-generator.md` → `.codex/skills/ixion-agent-report-generator/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/security-architect.md` → `.codex/skills/ixion-agent-security-architect/SKILL.md`
+- `.codex/.ixion/plugins/bkit/agents/starter-guide.md` → `.codex/skills/ixion-agent-starter-guide/SKILL.md`
+
+#### 2.1.3 bkit 기타 디렉토리(참고/부분 이식)
+
+- output styles(참고): `.codex/.ixion/plugins/bkit/output-styles/`
+- system knowledge base(참고): `.codex/.ixion/plugins/bkit/bkit-system/` → `.codex/skills/ixion-bkit-system/SKILL.md`에서 네비게이션 제공
+- commands(참고): `.codex/.ixion/plugins/bkit/commands/`
+- hooks/scripts(Claude Code 전용 자동화 포함): `.codex/.ixion/plugins/bkit/hooks/`, `.codex/.ixion/plugins/bkit/scripts/`
+  - Codex에서는 동일 자동 훅을 재현하기 어렵다.
+  - 대신 ixion 스킬 가드레일(`ixion-core`, `ixion-verify`, `ixion-review`)로 “수동 적용”한다.
 
 ### 2.2 oh-my-claudecode(OMC) → 오케스트레이션 패턴
 

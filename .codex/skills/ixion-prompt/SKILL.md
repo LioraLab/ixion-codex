@@ -62,6 +62,12 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
   - 핵심 여정을 E2E로 고정하고 CI에서 아티팩트까지 남겨야 할 때.
 - 브라우저 자동화(Playwright CLI): `$ixion-playwright-cli`
   - 웹에서 실제 클릭/입력/스크린샷/PDF/텍스트 추출/네트워크 확인이 필요할 때.
+- 개발 파이프라인(Phase): `$ixion-development-pipeline`
+  - 새 프로젝트에서 “뭐부터/순서”가 애매할 때 9-Phase로 다음 단계를 안내.
+- Zero Script QA(로그 기반 검증): `$ixion-zero-script-qa`
+  - 테스트 코드 없이 로그/모니터링으로 빠르게 QA 근거를 만들 때.
+- bkit 맵/탐색(선택): `$ixion-bkit-system`
+  - bkit 플러그인 내부(templates/skills/agents/hooks/scripts)를 ixion 관점에서 빠르게 찾을 때.
 - 역할 기반 엔트리포인트(옵트인): `$ixion-agent-*`
   - 사용자가 “에이전트로/agent mode/agent로”를 **명시**했을 때만 이 경로를 선택한다.
   - 역할 힌트가 없으면 기본값은 `$ixion-agent-executor`(작업에 맞게 ixion 스킬을 스스로 선택하는 라우터).
@@ -94,9 +100,11 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
 
 0. (에이전트 모드, 옵트인) 사용자가 “에이전트로/agent mode/agent로”를 **명시**했으면:
    - 역할 힌트가 없으면 "주 익션"은 `$ixion-agent-executor`
-   - 역할 힌트가 있으면 "주 익션"은 해당 `$ixion-agent-*` (explore/architect/executor/build-fixer/go-build-resolver/code-reviewer/go-reviewer/python-reviewer/security-reviewer/verifier/planner/analyst/critic/writer/designer/researcher/git-master/database-reviewer/doc-updater/e2e-runner/refactor-cleaner/tdd-guide)
+   - 역할 힌트가 있으면 "주 익션"은 해당 `$ixion-agent-*` (explore/architect/executor/build-fixer/go-build-resolver/code-reviewer/go-reviewer/python-reviewer/security-reviewer/verifier/planner/analyst/critic/writer/designer/researcher/git-master/database-reviewer/doc-updater/e2e-runner/refactor-cleaner/tdd-guide + bkend-expert/code-analyzer/cto-lead/design-validator/enterprise-expert/frontend-architect/gap-detector/infra-architect/pdca-iterator/pipeline-guide/product-manager/qa-monitor/qa-strategist/report-generator/security-architect/starter-guide)
    - 이 경우 아래 1)~의 기능 분류 라우터는 건너뛴다(에이전트가 스스로 ixion 스킬을 선택/조합).
 1. (요청 분류) 아래 중 하나로 "주 익션(Primary)"를 1개 고른다.
+   - 개발 파이프라인/phase/뭐부터/순서 -> `$ixion-development-pipeline`
+   - zero script qa/로그 기반 QA -> `$ixion-zero-script-qa`
    - 계획/요구사항/합의 -> `$ixion-plan`
    - 원인 분석(코드 변경 없이) -> `$ixion-analyze`
    - AGENTS.md 생성/갱신 -> `$ixion-deepinit`
@@ -718,6 +726,49 @@ $ixion-playwright-cli
 
 요청:
 - <Playwright/브라우저 자동화 요청 원문>
+```
+
+### Development Pipeline (개발 순서/Phase 가이드)
+
+```text
+$ixion-development-pipeline
+
+목적:
+- <왜 지금 “순서/phase” 가이드가 필요한지 1-2줄>
+
+주 익션 선택 이유:
+- <왜 지금은 구현이 아니라 개발 순서/다음 단계 합의가 최적인지 1-2줄>
+
+현재 상태:
+- 프로젝트 타입: <웹/앱/CLI/...>
+- 있는 것: <이미 있는 문서/코드/기능>
+- 없는 것: <아직 없는 핵심(용어/컨벤션/API/배포 등)>
+
+원하는 결과:
+- 9-Phase 중 지금 Phase 추정 + 다음 1-2개 Phase의 “해야 할 일/산출물”을 체크리스트로 제시해줘.
+
+요청:
+- <파이프라인/개발 순서 관련 요청 원문>
+```
+
+### Zero Script QA (로그 기반 QA)
+
+```text
+$ixion-zero-script-qa
+
+목적:
+- <왜 테스트 코드 대신 로그 기반 QA로 검증하려는지 1-2줄>
+
+주 익션 선택 이유:
+- <왜 지금은 유닛/E2E보다 로그/모니터링 기반 근거 수집이 최적인지 1-2줄>
+
+대상:
+- 서비스/컨테이너: <docker compose 서비스명 등>
+- 핵심 유저 여정: <1-3개>
+
+요청:
+- 구조화 로그(JSON) 기준과 request_id 추적 기준을 제안하고,
+- 실제 로그 모니터링 커맨드와 “이슈를 어떻게 문서화할지” 템플릿까지 만들어줘.
 ```
 
 ### Web

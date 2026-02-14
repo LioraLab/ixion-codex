@@ -14,6 +14,8 @@ AI가 코드를 쓰더라도, 장기 유지에 치명적인 문제(회귀/보안
 - ECC Code Reviewer Agent: `.codex/.ixion/plugins/everything-claude-code/agents/code-reviewer.md`
 - (선택) OMC Code Review Skill: `.codex/.ixion/plugins/oh-my-claudecode/skills/code-review/SKILL.md`
 - (선택) OMC Codex Code Reviewer: `.codex/.ixion/plugins/oh-my-claudecode/agents.codex/code-reviewer.md`
+- (선택) bkit Code Review Skill: `.codex/.ixion/plugins/bkit/skills/code-review/SKILL.md`
+- (선택) bkit Phase-8 Review Template: `.codex/.ixion/templates/pipeline/phase-8-review.template.md`
 
 ## 리뷰 우선순위
 1. 기능/정합성 버그 (NPE, 경계조건, race)

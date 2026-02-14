@@ -44,3 +44,7 @@ metadata:
 - Schema: `.codex/.ixion/templates/schema.template.md`
 - Pipeline: `.codex/.ixion/templates/pipeline/*.template.md`
 - Guide: `.codex/.ixion/templates/TEMPLATE-GUIDE.md`
+
+## 같이 쓰기(권장)
+- “뭐부터/어떤 순서로”가 애매하면: `$ixion-development-pipeline`
+- 특정 Phase를 진행 중이면: `$ixion-pipeline-phase-*` (예: `ixion-pipeline-phase-2-convention`)

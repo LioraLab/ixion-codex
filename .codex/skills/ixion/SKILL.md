@@ -11,7 +11,7 @@ metadata:
 bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스킬 + 멀티 에이전트)으로 통합한 “익션(Extension) 스위트”의 진입점이다.
 
 ## 원문 참고(SSOT)
-- bkit(문서/PDCA 템플릿): `.codex/.ixion/plugins/bkit/templates/`
+- bkit(문서/템플릿 + 개발 파이프라인/레벨 프리셋/에이전트): `.codex/.ixion/plugins/bkit/templates/`, `.codex/.ixion/plugins/bkit/skills/`, `.codex/.ixion/plugins/bkit/agents/`, `.codex/.ixion/plugins/bkit/output-styles/`, `.codex/.ixion/plugins/bkit/bkit-system/`
 - OMC(오케스트레이션/에이전트 프롬프트): `.codex/.ixion/plugins/oh-my-claudecode/skills/`, `.codex/.ixion/plugins/oh-my-claudecode/agents.codex/`
 - ECC(장기 운영 규칙/검증/학습 + 에이전트 프롬프트): `.codex/.ixion/plugins/everything-claude-code/skills/`, `.codex/.ixion/plugins/everything-claude-code/rules/`, `.codex/.ixion/plugins/everything-claude-code/agents/`
 
@@ -23,12 +23,16 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 ## 기본 전략 (추천)
 - 프롬프트(요청문) 생성: `$ixion-prompt`
 - 역할 기반 엔트리포인트(옵트인): 사용자가 “에이전트로/agent mode/agent로”를 **명시**했을 때만 `$ixion-agent-*` (explore/architect/executor/reviewer/verifier 등)
+- bkit 맵/탐색(선택): `$ixion-bkit-system`
 - 계획/요구사항 수렴(인터뷰/합의형): `$ixion-plan`
 - 원인 분석(코드 변경 없이): `$ixion-analyze`
 - 코드베이스 문서화(AGENTS.md): `$ixion-deepinit`
 - Git 작업(커밋/리베이스/브랜치): `$ixion-git-master`
 - 리서치(내부 코드 + 외부 문서): `$ixion-research`
 - UI/UX(프론트엔드): `$ixion-frontend-ui-ux`
+- 개발 파이프라인(Phase): `$ixion-development-pipeline`
+- Zero Script QA(로그 기반 검증): `$ixion-zero-script-qa`
+- 레벨 프리셋(선택): `$ixion-starter`, `$ixion-dynamic`, `$ixion-enterprise`
 - 도메인 프리셋:
   - 웹 개발: `$ixion-web`
   - 앱 개발: `$ixion-app`
@@ -57,8 +61,23 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 ## 라우팅 규칙
 요청을 받으면 아래 중 하나로 즉시 라우팅한다(질문은 “지금 안 물으면 실패”할 때만 1-2개).
 - “에이전트로/agent mode/agent로” -> 역할 힌트가 없으면 `$ixion-agent-executor`
-  역할 힌트가 있으면 해당 엔트리포인트로 라우팅: explore/architect/executor/build-fixer/go-build-resolver/code-reviewer/go-reviewer/python-reviewer/security-reviewer/verifier/planner/analyst/critic/writer/designer/researcher/git-master/database-reviewer/doc-updater/e2e-runner/refactor-cleaner/tdd-guide -> `$ixion-agent-*`
+  역할 힌트가 있으면 해당 엔트리포인트로 라우팅: explore/architect/executor/build-fixer/go-build-resolver/code-reviewer/go-reviewer/python-reviewer/security-reviewer/verifier/planner/analyst/critic/writer/designer/researcher/git-master/database-reviewer/doc-updater/e2e-runner/refactor-cleaner/tdd-guide/bkend-expert/code-analyzer/cto-lead/design-validator/enterprise-expert/frontend-architect/gap-detector/infra-architect/pdca-iterator/pipeline-guide/product-manager/qa-monitor/qa-strategist/report-generator/security-architect/starter-guide -> `$ixion-agent-*`
 - “프롬프트/prompt/요청문/템플릿” -> `$ixion-prompt`
+- “bkit” -> `$ixion-bkit-system`
+- “개발 파이프라인/development pipeline/phase/뭐부터/어디서부터/순서/where to start” -> `$ixion-development-pipeline`
+- “zero script qa/제로 스크립트 QA/로그 기반 QA/로그로 검증” -> `$ixion-zero-script-qa`
+- “phase-1/phase 1/schema/terminology/용어/용어집/glossary” -> `$ixion-pipeline-phase-1-schema`
+- “phase-2/phase 2/convention/컨벤션/코딩 규칙/환경변수 규칙” -> `$ixion-pipeline-phase-2-convention`
+- “phase-3/phase 3/mockup/목업/prototype/와이어프레임” -> `$ixion-pipeline-phase-3-mockup`
+- “phase-4/phase 4/zero script qa/api 구현(phase)” -> `$ixion-pipeline-phase-4-api`
+- “phase-5/phase 5/design system/디자인 시스템(phase)” -> `$ixion-pipeline-phase-5-design-system`
+- “phase-6/phase 6/ui integration/UI 구현(phase)” -> `$ixion-pipeline-phase-6-ui-integration`
+- “phase-7/phase 7/seo/security/검색 최적화” -> `$ixion-pipeline-phase-7-seo-security`
+- “phase-8/phase 8/gap analysis/아키텍처 리뷰/컨벤션 리뷰” -> `$ixion-pipeline-phase-8-review`
+- “phase-9/phase 9/deployment/배포 준비” -> `$ixion-pipeline-phase-9-deployment`
+- “starter/정적 웹/포트폴리오/초보” -> `$ixion-starter`
+- “bkend/bkend.ai/BaaS” -> `$ixion-dynamic`
+- “enterprise/엔터프라이즈/microservices/kubernetes/terraform” -> `$ixion-enterprise`
 - “plan/계획/요구사항/스펙/범위 정리/consensus/ralplan” -> `$ixion-plan`
 - “analyze/분석/investigate/원인/왜 이래/왜 이러지/root cause” -> `$ixion-analyze`
 - “AGENTS.md/deepinit/온보딩 문서/디렉토리 문서” -> `$ixion-deepinit`

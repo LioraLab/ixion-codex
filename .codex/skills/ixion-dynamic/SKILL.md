@@ -1,0 +1,22 @@
+---
+name: ixion-dynamic
+description: (Preset) 서버 운영 없이 로그인/DB/스토리지가 필요한 풀스택을 bkend.ai(BaaS) 중심으로 빠르게 구성한다.
+metadata:
+  short-description: Dynamic preset (bkend.ai)
+---
+
+# Ixion Dynamic (bkend.ai)
+
+## 원문 참고(SSOT)
+- bkit dynamic: `.codex/.ixion/plugins/bkit/skills/dynamic/SKILL.md`
+- bkend 패턴: `.codex/.ixion/templates/shared/bkend-patterns.md`
+
+## 목표
+- 인증/데이터/파일을 “운영 최소”로 붙여 MVP를 빠르게 만든다.
+
+## 연결(권장)
+- 초기 개념/연결부터면: `$ixion-bkend-quickstart`
+- 인증: `$ixion-bkend-auth`
+- 데이터: `$ixion-bkend-data`
+- 스토리지: `$ixion-bkend-storage`
+

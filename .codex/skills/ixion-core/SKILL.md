@@ -14,6 +14,8 @@ metadata:
 ## 원문 참고(SSOT)
 - ECC Coding Standards: `.codex/.ixion/plugins/everything-claude-code/skills/coding-standards/SKILL.md`
 - ECC Common Rules(참고용): `.codex/.ixion/plugins/everything-claude-code/rules/common/`
+- bkit Core Rules: `.codex/.ixion/plugins/bkit/skills/bkit-rules/SKILL.md`
+- bkit Config(레벨/가드레일 힌트): `.codex/.ixion/plugins/bkit/bkit.config.json`
 - bkit Convention Template: `.codex/.ixion/templates/convention.template.md`
 
 ## 항상 먼저 정리 (2-4줄)
@@ -28,6 +30,19 @@ metadata:
 3. 스코프 확장(김에 수정) 금지.
 4. 변경 후 검증을 최소 1개는 실행한다.
 5. 결정/리스크는 짧게 남긴다.
+
+## Source of Truth(우선순위)
+충돌 시 아래 우선순위를 따른다.
+1. 실행 중인 코드/테스트/빌드 결과(현실)
+2. 프로젝트의 AGENTS.md/README/CONVENTIONS 같은 “사람이 보는 규칙”
+3. `.codex/.ixion/docs/`의 합의 문서(Plan/Design)
+4. 플러그인(SSOT)은 원리/템플릿 참고용(프로젝트 현실과 충돌하면 프로젝트 현실 우선)
+
+## 레벨 감(선택)
+프로젝트 성격을 빠르게 잡기 위한 3단계 분류(필수는 아님).
+- Starter: 정적/단순 웹, 백엔드 없음
+- Dynamic: 로그인/DB/스토리지 같은 “동적 요구”가 있으나 운영 최소(BaaS 활용 가능)
+- Enterprise: MSA/인프라/컴플라이언스/고가용성 전제
 
 ## 멈추고 확인해야 하는 경우
 - 데이터 삭제, 마이그레이션, 권한/보안, 결제, 배포
