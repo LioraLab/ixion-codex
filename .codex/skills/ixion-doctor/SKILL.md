@@ -16,12 +16,19 @@ metadata:
 
 ## 진단 항목
 - 프로젝트 타입 추정: Node/Python/Go/기타
+- 도메인 추정(있으면):
+  - Shopify 테마: `sections/`, `templates/`, `config/settings_schema.json`, `shopify.theme.toml`
+  - 앱(모바일): `android/`, `ios/`, `app.json`, `pubspec.yaml`
+  - 컴퓨터비전: `pyproject.toml`/`requirements.txt` + `opencv`/`torch` 키워드, `scripts/infer*`, `notebooks/`
 - 실행 가능한 검증 명령 후보 찾기
   - Node: `npm test`, `pnpm test`, `bun test`, `npm run lint`, `npm run build`
   - Python: `pytest`, `python -m pytest`, `ruff`, `mypy`
   - Go: `go test ./...`, `golangci-lint run`
+  - Shopify theme: `shopify theme check`, `theme-check`, `shopify theme dev`(스모크), `npm run lint`
+  - Flutter: `flutter test`, `flutter analyze`
+  - React Native: `npx react-native doctor`, `npx tsc --noEmit`, `npm test`
 - 리포지토리 구조: 주요 엔트리/패키지 파일 존재 여부
 
 ## 출력
-- 추천 검증 명령 1개(최소) + 대안 2개
+- 추천 검증 명령 1개(최소) + 대안 2개 (+ 선택 이유 1줄)
 - “다음부터 자동화가 잘 되려면” 추가하면 좋은 파일/규칙(필요할 때만)

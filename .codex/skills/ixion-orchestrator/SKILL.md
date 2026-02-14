@@ -16,6 +16,8 @@ metadata:
 - OMC 팀 오케스트레이션(개념/스테이지): `.codex/.ixion/plugins/oh-my-claudecode/skills/team/SKILL.md`
 - OMC 자동 실행 모드: `.codex/.ixion/plugins/oh-my-claudecode/skills/autopilot/SKILL.md`
 - OMC 파이프라인 모드: `.codex/.ixion/plugins/oh-my-claudecode/skills/pipeline/SKILL.md`
+- OMC 병렬 실행 엔진(개념): `.codex/.ixion/plugins/oh-my-claudecode/skills/ultrawork/SKILL.md`
+- OMC 지속/완료 루프(개념): `.codex/.ixion/plugins/oh-my-claudecode/skills/ralph/SKILL.md`
 - OMC Codex 에이전트 프롬프트(역할 정의): `.codex/.ixion/plugins/oh-my-claudecode/agents.codex/*.md`
 - ECC 반복 탐색/명료화: `.codex/.ixion/plugins/everything-claude-code/skills/iterative-retrieval/SKILL.md`
 
@@ -46,6 +48,15 @@ metadata:
 6. 기록
    - 중요한 결정/트레이드오프는 `.codex/.ixion/decisions.md`에 짧게 남긴다.
    - 실행 로그/체크포인트가 필요하면 `.codex/.ixion/state/`에 남긴다.
+
+## 지속 모드(ralph 스타일, 선택)
+아래 같은 요구가 명시되면 "완료 선언 전 검증 증거"를 더 강하게 강제한다.
+
+- 트리거 예시: "끝날 때까지", "중단하지마", "반드시 완료", "계속 돌려서 그린 만들어줘"
+- 기본 적용:
+  - 병렬 작업은 최대한 병렬로 처리(ultrawork 개념)
+  - 완료 선언 전 `$ixion-verify` 최소 1개는 반드시 실행
+  - 실패가 반복되면 “동일 실패 3회”에서 근본 원인/선택지를 제시하고 사용자 확인을 받는다
 
 ## 예외 라우팅
 - (현재 없음) 워크플로우/캔버스 편집 같은 특수 작업이 필요해지면 별도 익션으로 분리한다.
