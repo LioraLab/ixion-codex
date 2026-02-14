@@ -51,9 +51,9 @@ Zero Script QA:
 - `.codex/.ixion/plugins/bkit/skills/zero-script-qa/SKILL.md` → `.codex/skills/ixion-zero-script-qa/SKILL.md`
 
 레벨 프리셋(선택):
-- `.codex/.ixion/plugins/bkit/skills/starter/SKILL.md` → `.codex/skills/ixion-starter/SKILL.md`
-- `.codex/.ixion/plugins/bkit/skills/dynamic/SKILL.md` → `.codex/skills/ixion-dynamic/SKILL.md`
-- `.codex/.ixion/plugins/bkit/skills/enterprise/SKILL.md` → `.codex/skills/ixion-enterprise/SKILL.md`
+- `.codex/.ixion/plugins/bkit/skills/starter/SKILL.md` → `.codex/skills/ixion-presets/SKILL.md` (Starter)
+- `.codex/.ixion/plugins/bkit/skills/dynamic/SKILL.md` → `.codex/skills/ixion-presets/SKILL.md` (Dynamic)
+- `.codex/.ixion/plugins/bkit/skills/enterprise/SKILL.md` → `.codex/skills/ixion-presets/SKILL.md` (Enterprise)
 
 bkend.ai(선택):
 - `.codex/.ixion/plugins/bkit/skills/bkend-quickstart/SKILL.md` → `.codex/skills/ixion-bkend/SKILL.md` (Quickstart section)
@@ -66,7 +66,7 @@ bkend.ai(선택):
 - `.codex/.ixion/plugins/bkit/skills/bkit-rules/SKILL.md` → `.codex/skills/ixion-core/SKILL.md` (가드레일 참고)
 - `.codex/.ixion/plugins/bkit/skills/bkit-templates/SKILL.md` → `.codex/skills/ixion-pdca/SKILL.md` (템플릿 경로 참고)
 - `.codex/.ixion/plugins/bkit/skills/code-review/SKILL.md` → `.codex/skills/ixion-review/SKILL.md` (리뷰 관점 참고)
-- `.codex/.ixion/plugins/bkit/skills/mobile-app/SKILL.md`, `.codex/.ixion/plugins/bkit/skills/desktop-app/SKILL.md` → `.codex/skills/ixion-app/SKILL.md` (참고용)
+- `.codex/.ixion/plugins/bkit/skills/mobile-app/SKILL.md`, `.codex/.ixion/plugins/bkit/skills/desktop-app/SKILL.md` → `.codex/skills/ixion-domains/SKILL.md` (Domain: App, 참고용)
 - `.codex/.ixion/plugins/bkit/skills/claude-code-learning/SKILL.md` → Claude Code 전용(참고만)
 
 #### 2.1.2 bkit Agents (SSOT만 유지)
@@ -105,8 +105,8 @@ SSOT: `.codex/.ixion/plugins/bkit/agents/*.md`
 - `.codex/.ixion/plugins/oh-my-claudecode/skills/frontend-ui-ux/SKILL.md` → `.codex/skills/ixion-frontend-ui-ux/SKILL.md`
 - `.codex/.ixion/plugins/oh-my-claudecode/skills/deepinit/SKILL.md` → `.codex/skills/ixion-deepinit/SKILL.md`
 - `.codex/.ixion/plugins/oh-my-claudecode/skills/analyze/SKILL.md` → `.codex/skills/ixion-analyze/SKILL.md`
-- `.codex/.ixion/plugins/oh-my-claudecode/skills/plan/SKILL.md` → `.codex/skills/ixion-plan/SKILL.md`
-- `.codex/.ixion/plugins/oh-my-claudecode/skills/ralplan/SKILL.md` → `.codex/skills/ixion-plan/SKILL.md` (합의형 모드 참고)
+- `.codex/.ixion/plugins/oh-my-claudecode/skills/plan/SKILL.md` → `.codex/skills/ixion-pdca/SKILL.md` (Plan 작성 모드)
+- `.codex/.ixion/plugins/oh-my-claudecode/skills/ralplan/SKILL.md` → `.codex/skills/ixion-pdca/SKILL.md` (합의형 플래닝 개념 참고)
 - `.codex/.ixion/plugins/oh-my-claudecode/agents.codex/*.md` → 역할/출력 기준 참고(익션 오케스트레이션 설계의 기준점)
 
 ### 2.2.1 oh-my-claudecode(OMC) → 에이전트 프롬프트(Agent-as-Skill)
@@ -143,7 +143,7 @@ SSOT: `.codex/.ixion/plugins/bkit/agents/*.md`
   - `.codex/.ixion/plugins/everything-claude-code/skills/postgres-patterns/SKILL.md` → `.codex/skills/ixion-patterns/SKILL.md` (Postgres Patterns)
   - `.codex/.ixion/plugins/everything-claude-code/skills/docker-patterns/SKILL.md` → `.codex/skills/ixion-patterns/SKILL.md` (Docker Patterns)
   - `.codex/.ixion/plugins/everything-claude-code/skills/deployment-patterns/SKILL.md` → `.codex/skills/ixion-patterns/SKILL.md` (Deployment Patterns)
-  - `.codex/.ixion/plugins/everything-claude-code/skills/e2e-testing/SKILL.md` → `.codex/skills/ixion-e2e-testing/SKILL.md`
+  - `.codex/.ixion/plugins/everything-claude-code/skills/e2e-testing/SKILL.md` → `.codex/skills/ixion-playwright/SKILL.md`
 
 ### 2.3.1 everything-claude-code(ECC) → 에이전트 프롬프트(Agent-as-Skill)
 
@@ -163,12 +163,9 @@ SSOT: `.codex/.ixion/plugins/bkit/agents/*.md`
 
 스킬:
 - `.codex/skills/ixion-prompt/SKILL.md`
-- `.codex/skills/ixion-web/SKILL.md`
-- `.codex/skills/ixion-app/SKILL.md`
-- `.codex/skills/ixion-software/SKILL.md`
-- `.codex/skills/ixion-cv/SKILL.md`
-- `.codex/skills/ixion-shopify/SKILL.md`
-- `.codex/skills/ixion-deepsearch/SKILL.md`
+- `.codex/skills/ixion-domains/SKILL.md`
+- `.codex/skills/ixion-presets/SKILL.md`
+- `.codex/skills/ixion-analyze/SKILL.md` (Deep Search 모드)
 - `.codex/skills/ixion-build-fix/SKILL.md`
 
 참고:
@@ -181,7 +178,7 @@ SSOT: `.codex/.ixion/plugins/bkit/agents/*.md`
 익션은 플러그인(SSOT)을 주로 사용하지만, 사용자 로컬 스킬을 ixion 스킬로 “이식”해 재사용할 수도 있다.
 
 주요 파일:
-- `.codex/skills/ixion-playwright-cli/` (Playwright CLI 브라우저 자동화 스킬, 이식 완료)
+- `.codex/skills/ixion-playwright/` (Playwright(E2E + 브라우저 자동화/playwright-cli), 이식/통합 완료)
 
 ---
 

@@ -19,7 +19,7 @@
 | configure-discord | 해당 없음 | 보류 | ixion 범위 밖 |
 | configure-telegram | 해당 없음 | 보류 | ixion 범위 밖 |
 | deepinit | ixion-deepinit | 래퍼 | 계층형 AGENTS.md 생성/갱신 |
-| deepsearch | ixion-deepsearch | 흡수 | 읽기 전용 흐름 파악 |
+| deepsearch | ixion-analyze | 흡수 | 읽기 전용 흐름 파악(Deep Search 모드) |
 | doctor | ixion-doctor | 흡수 | 검증 커맨드 추천/프로젝트 타입 추정 |
 | ecomode | 해당 없음 | 보류 | OMC 모델/비용 라우팅에 강하게 결합 |
 | frontend-ui-ux | ixion-frontend-ui-ux | 래퍼 | Codex 환경(구현+검증) 기준으로 재정의 |
@@ -32,12 +32,12 @@
 | note | ixion-learn | 부분 흡수 | “작업 중 노트”가 필요하면 `ixion-note` 후보 |
 | omc-setup | 해당 없음 | 보류 | OMC 설치/셋업 범주 |
 | pipeline | ixion-orchestrator | 흡수 | 파이프라인/병렬화 개념 SSOT |
-| plan | ixion-plan | 래퍼 | 인터뷰/직접/합의/리뷰 모드(AskUserQuestion 없이 plain Q&A로 대체) |
+| plan | ixion-pdca | 흡수 | Plan 작성 모드(요구사항/범위 합의, plain Q&A) |
 | project-session-manager | 해당 없음 | 보류 | OMC 세션 관리 |
 | psm | 해당 없음 | 보류 | project-session-manager alias |
 | ralph-init | 해당 없음 | 보류 | OMC ralph 초기화 |
 | ralph | ixion-orchestrator (+ ixion-verify) | 흡수(개념) | “끝날 때까지/검증까지”를 오케스트레이터에 반영 |
-| ralplan | ixion-plan | 흡수(부분) | 합의형 플래닝(Consensus) 개념을 `ixion-plan`에 포함 |
+| ralplan | ixion-pdca | 흡수(부분) | 합의형 플래닝(Consensus) 개념을 PDCA Plan 모드에 포함 |
 | release | 해당 없음 | 보류 | OMC 릴리즈 자동화(OMC 전용) |
 | research | ixion-research | 래퍼 | 내부 코드 + 외부 문서 근거 기반 리서치 |
 | review | ixion-review | 흡수 | OMC는 plan review alias |
@@ -58,4 +58,4 @@
 - `.codex/skills/ixion-frontend-ui-ux/SKILL.md`
 - `.codex/skills/ixion-deepinit/SKILL.md`
 - `.codex/skills/ixion-analyze/SKILL.md`
-- `.codex/skills/ixion-plan/SKILL.md`
+- `.codex/skills/ixion-pdca/SKILL.md`

@@ -1,21 +1,27 @@
 ---
-name: ixion-playwright-cli
-description: Playwright CLI(`playwright-cli`)로 브라우저 자동화(웹 탐색/폼 입력/스크린샷/PDF/데이터 추출/E2E 디버깅)를 수행한다. Triggers: playwright, playwright-cli, e2e, 브라우저 자동화, 웹 스크린샷, 폼 자동 입력, 웹 데이터 추출.
+name: ixion-playwright
+description: Playwright로 E2E 테스트와 브라우저 자동화(디버깅/셀렉터 확인/스크린샷/트레이스/네트워크)를 수행한다. 필요하면 `playwright-cli`로 실제 브라우저 행동을 재현하고 아티팩트를 남긴다. Triggers: playwright, playwright-cli, e2e, 브라우저 자동화, 웹 스크린샷, 폼 자동 입력, 웹 데이터 추출.
 metadata:
-  short-description: Browser automation via playwright-cli
+  short-description: Playwright (E2E + browser automation)
 ---
 
-# Ixion Playwright CLI
+# Ixion Playwright
 
 ## 목표
-- `playwright-cli`로 웹 페이지를 실제로 열고, 스냅샷(ref 기반)으로 안전하게 클릭/입력/스크린샷/PDF/네트워크 확인을 수행한다.
-- “문서/설명”이 아니라 **재현 가능한 브라우저 행동 + 아티팩트(스크린샷/트레이스/비디오)**를 남기는 게 목적일 때 사용한다.
+- E2E 테스트를 “유지 가능한 구조 + 안정적인 실행 + 아티팩트”까지 포함해 구축/개선한다.
+- `playwright-cli`로 실제 웹 페이지를 열고, 스냅샷(ref 기반)으로 안전하게 클릭/입력/스크린샷/PDF/네트워크 확인을 수행한다.
 
 ## 언제 쓰나
+- Playwright 기반 E2E 테스트 추가/개선(CI 아티팩트 포함)
 - Playwright/E2E 관련 작업(디버깅, 셀렉터 확인, 플로우 재현)
 - 웹 페이지에서 폼 입력/버튼 클릭/스크린샷/PDF 저장
 - 웹 페이지의 특정 정보 추출(텍스트/DOM)
 - 네트워크/콘솔 로그 확인이 필요할 때
+
+## E2E 기본 규칙
+- 안정적 셀렉터(`data-testid`) 우선
+- 임의 sleep 금지(조건 기반 wait)
+- flaky는 원인 제거가 우선, 격리는 마지막 수단
 
 ## 가드레일
 - 결제/삭제/권한 변경 같은 **돌이킬 수 없는 액션**은 실행 전에 1회 확인한다.
@@ -24,8 +30,12 @@ metadata:
   - 자격 증명은 사용자가 제공한 범위 내에서만 사용
 - “페이지 상태를 추측”하지 말고 `snapshot`, `console`, `network`, `screenshot` 같은 **증거 기반**으로 진행한다.
 
+## 검증(필수)
+- E2E 작업이면 시나리오 1개 이상을 실제로 실행하고 결과로만 보고한다.
+- 브라우저 자동화 작업이면 스크린샷/트레이스/비디오 중 1개 이상을 남긴다.
+
 ## 전제(툴)
-- 이 스킬은 로컬 CLI `playwright-cli`를 사용한다.
+- 브라우저 자동화/디버깅은 로컬 CLI `playwright-cli`를 사용한다.
   - 설치/점검: `playwright-cli --help`
 
 ## Quick start

@@ -21,18 +21,19 @@
 |내가 말하는 의도(키워드)|주 익션(Primary)|동반 익션(조건부, 필요할 때만)|비고|
 |---|---|---|---|
 |프롬프트/요청문/템플릿 만들어줘|`$ixion-prompt`|`$ixion`|프롬프트 생성 전용(코드 수정 아님).|
-|계획/요구사항/범위 합의/스펙 정리|`$ixion-plan`|`$ixion-pdca`|큰 작업/실패 비용 큰 작업은 plan 먼저.|
+|계획/요구사항/범위 합의/스펙 정리|`$ixion-pdca`|`$ixion-orchestrator`|Plan 합의 후 구현 단계로 넘김.|
 |문서(Plan/Design/Analysis/Report) 남기기|`$ixion-pdca`|`$ixion-learn`|문서 템플릿 기반으로 자산화.|
-|“왜 이래?” 원인 분석(코드 변경 없음)|`$ixion-analyze`|`$ixion-deepsearch`|읽기 전용 분석.|
-|구조/흐름/호출 관계 찾아줘(읽기 전용)|`$ixion-deepsearch`|`$ixion-analyze`|코드 위치/흐름 맵핑.|
+|“왜 이래?” 원인 분석(코드 변경 없음)|`$ixion-analyze`|`-`|필요하면 Deep Search 모드로 위치/흐름까지 같이.|
+|구조/흐름/호출 관계 찾아줘(읽기 전용)|`$ixion-analyze`|`-`|Mode: Deep Search.|
 |그냥 구현/버그픽스/리팩터링(큰 작업/불확실)|`$ixion-orchestrator`|`$ixion-verify`, `$ixion-review`, `$ixion-security`|탐색→분할→구현→검증 파이프라인.|
-|웹 개발(프론트/백엔드/풀스택)|`$ixion-web`|`$ixion-security`, `$ixion-verify`, `$ixion-review`|브라우저 재현이 필요하면 `$ixion-playwright-cli`.|
-|앱 개발(모바일/데스크톱)|`$ixion-app`|`$ixion-verify`, `$ixion-security`|bkit 모바일/데스크톱 가이드는 참고용.|
-|소프트웨어/CLI/라이브러리|`$ixion-software`|`$ixion-tdd`, `$ixion-verify`, `$ixion-review`|공개 API/옵션 변경이면 TDD 권장.|
-|Shopify 테마(Liquid/sections)|`$ixion-shopify`|`$ixion-verify`|Shopify 전용 노트북 SSOT도 병행.|
-|컴퓨터비전(CV)|`$ixion-cv`|`$ixion-verify`|샘플 스모크 실행 기준 고정.|
+|웹 개발(프론트/백엔드/풀스택)|`$ixion-domains`|`$ixion-security`, `$ixion-verify`, `$ixion-review`|Domain: Web. 브라우저 재현이 필요하면 `$ixion-playwright`.|
+|앱 개발(모바일/데스크톱)|`$ixion-domains`|`$ixion-verify`, `$ixion-security`|Domain: App.|
+|소프트웨어/CLI/라이브러리|`$ixion-domains`|`$ixion-tdd`, `$ixion-verify`, `$ixion-review`|Domain: Software.|
+|Shopify 테마(Liquid/sections)|`$ixion-domains`|`$ixion-verify`|Domain: Shopify. Shopify 전용 노트북 SSOT도 병행.|
+|컴퓨터비전(CV)|`$ixion-domains`|`$ixion-verify`|Domain: CV.|
 |UI/UX만 집중(접근성/반응형 포함)|`$ixion-frontend-ui-ux`|`$ixion-verify`|디자인+구현+상태(로딩/에러/빈) 포함.|
 |API/DB/Postgres/Docker/배포 “패턴/체크리스트”가 필요함|`$ixion-patterns`|`$ixion-security`, `$ixion-verify`, `$ixion-tdd`|필요한 패턴만 골라 적용.|
+|E2E/Playwright 테스트/브라우저 자동화|`$ixion-playwright`|`$ixion-verify`|E2E면 시나리오 1개 이상 실행. 자동화면 스크린샷/트레이스/비디오 등 아티팩트 남김.|
 |Git 작업(커밋/리베이스/브랜치 정리)|`$ixion-git-master`|-|안전한 원자 커밋 기본.|
 |리서치/비교/근거 정리(외부 문서 포함)|`$ixion-research`|-|최신 근거/링크 중심.|
 |빌드/타입/의존성 에러를 “최소 변경”으로 해결|`$ixion-build-fix`|`$ixion-verify`|리팩터링 금지, 에러만 제거.|
@@ -42,11 +43,11 @@
 |TDD로 진행|`$ixion-tdd`|`$ixion-verify`|Red-Green-Refactor 강제.|
 |새 프로젝트에서 “뭐부터/순서/phase”|`$ixion-development-pipeline`|`$ixion-pdca`|9-Phase 가이드(+ Phase별 체크리스트 포함).|
 |특정 phase 딥다이브(phase-1~9)|`$ixion-development-pipeline`|`$ixion-pdca`|Phase 번호를 지정해서 체크리스트 사용.|
-|테스트 코드 없이 로그로 QA(Zero Script QA)|`$ixion-zero-script-qa`|`$ixion-playwright-cli`|Docker 로그/구조화 로그 기반.|
-|초보/비개발자, 정적 웹 중심|`$ixion-starter`|`$ixion-web`|완주 우선, 과한 스택 금지.|
-|bkend.ai(BaaS) 연결/인증/데이터/스토리지|`$ixion-bkend`|`$ixion-dynamic`|bkend 통합 자체가 핵심일 때.|
-|bkend.ai(BaaS) 기반 풀스택|`$ixion-dynamic`|`$ixion-bkend`|운영 최소로 인증/DB/스토리지.|
-|엔터프라이즈 전제(MSA/k8s/terraform)|`$ixion-enterprise`|`$ixion-plan`, `$ixion-security`, `$ixion-patterns`|초반 합의/게이트가 핵심.|
+|테스트 코드 없이 로그로 QA(Zero Script QA)|`$ixion-zero-script-qa`|`$ixion-playwright`|Docker 로그/구조화 로그 기반.|
+|초보/비개발자, 정적 웹 중심|`$ixion-presets`|`$ixion-domains`|Preset: Starter. 완주 우선, 과한 스택 금지.|
+|bkend.ai(BaaS) 연결/인증/데이터/스토리지|`$ixion-bkend`|`$ixion-presets`|Preset: Dynamic. bkend 통합 자체가 핵심일 때.|
+|bkend.ai(BaaS) 기반 풀스택|`$ixion-presets`|`$ixion-bkend`, `$ixion-domains`|Preset: Dynamic. Domain: Web(대부분).|
+|엔터프라이즈 전제(MSA/k8s/terraform)|`$ixion-presets`|`$ixion-pdca`, `$ixion-security`, `$ixion-patterns`|Preset: Enterprise. 초반 합의/게이트가 핵심.|
 
 ---
 

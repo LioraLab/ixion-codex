@@ -24,7 +24,7 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 - 프롬프트(요청문) 생성: `$ixion-prompt`
 - 역할 기반 엔트리포인트(옵트인): 사용자가 “에이전트로/agent mode/agent로”를 **명시**했을 때만 `$ixion-agent-executor`
 - bkit 맵/탐색(선택): `$ixion-bkit-system`
-- 계획/요구사항 수렴(인터뷰/합의형): `$ixion-plan`
+- 계획/요구사항 수렴(인터뷰/합의형): `$ixion-pdca` (Plan 작성 모드)
 - 원인 분석(코드 변경 없이): `$ixion-analyze`
 - 코드베이스 문서화(AGENTS.md): `$ixion-deepinit`
 - Git 작업(커밋/리베이스/브랜치): `$ixion-git-master`
@@ -32,19 +32,13 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 - UI/UX(프론트엔드): `$ixion-frontend-ui-ux`
 - 개발 파이프라인(Phase): `$ixion-development-pipeline`
 - Zero Script QA(로그 기반 검증): `$ixion-zero-script-qa`
-- 레벨 프리셋(선택): `$ixion-starter`, `$ixion-dynamic`, `$ixion-enterprise`
+- 레벨 프리셋(선택): `$ixion-presets` (Starter/Dynamic/Enterprise)
 - bkend.ai(BaaS) 통합(선택): `$ixion-bkend`
-- 도메인 프리셋:
-  - 웹 개발: `$ixion-web`
-  - 앱 개발: `$ixion-app`
-  - 소프트웨어/CLI: `$ixion-software`
-  - 컴퓨터비전: `$ixion-cv`
-  - Shopify 테마: `$ixion-shopify`
+- 도메인 프리셋: `$ixion-domains` (Web/App/Software/CV/Shopify)
 - 패턴/체크리스트(선택):
   - API/DB/Postgres/Docker/배포 패턴: `$ixion-patterns`
-  - E2E 테스트: `$ixion-e2e-testing`
-  - 브라우저 자동화(Playwright CLI): `$ixion-playwright-cli`
-- 코드 위치/흐름 파악(읽기 전용): `$ixion-deepsearch`
+  - Playwright(E2E + 브라우저 자동화): `$ixion-playwright`
+- 코드 위치/흐름 파악(읽기 전용): `$ixion-analyze` (Deep Search 모드)
 - 빌드/타입 에러 최소 수정: `$ixion-build-fix`
 - 큰 작업/불확실: `$ixion-orchestrator`
 - 기능 개발 문서화: `$ixion-pdca`
@@ -71,12 +65,12 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 - “phase-7/phase 7/seo/security/검색 최적화” -> `$ixion-development-pipeline` (Phase 7)
 - “phase-8/phase 8/gap analysis/아키텍처 리뷰/컨벤션 리뷰” -> `$ixion-development-pipeline` (Phase 8)
 - “phase-9/phase 9/deployment/배포 준비” -> `$ixion-development-pipeline` (Phase 9)
-- “starter/초보/비개발자” -> `$ixion-starter`
-- “정적 웹/포트폴리오/랜딩페이지” -> `$ixion-web` (초보/비개발자면 `$ixion-starter`도 선택)
+- “starter/초보/비개발자” -> `$ixion-presets` (Starter)
+- “정적 웹/포트폴리오/랜딩페이지” -> `$ixion-domains` (Web) (초보/비개발자면 `$ixion-presets`(Starter)도 선택)
 - “bkend/bkend.ai/BaaS/mcp__bkend” -> `$ixion-bkend`
-- “dynamic/MVP/운영 최소 풀스택” -> `$ixion-dynamic`
-- “enterprise/엔터프라이즈/microservices/kubernetes/terraform” -> `$ixion-enterprise`
-- “plan/계획/요구사항/스펙/범위 정리/consensus/ralplan” -> `$ixion-plan`
+- “dynamic/MVP/운영 최소 풀스택” -> `$ixion-presets` (Dynamic)
+- “enterprise/엔터프라이즈/microservices/kubernetes/terraform” -> `$ixion-presets` (Enterprise)
+- “plan/계획/요구사항/스펙/범위 정리/consensus/ralplan” -> `$ixion-pdca` (Plan 작성 모드)
 - “analyze/분석/investigate/원인/왜 이래/왜 이러지/root cause” -> `$ixion-analyze`
 - “AGENTS.md/deepinit/온보딩 문서/디렉토리 문서” -> `$ixion-deepinit`
 - “git/커밋/commit/rebase/squash/브랜치/merge/cherry-pick” -> `$ixion-git-master`
@@ -87,15 +81,15 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 - “Postgres/SQL/인덱스/index/RLS/lock/데드락” -> `$ixion-patterns` (Postgres Patterns)
 - “Docker/dockerfile/컨테이너/이미지 빌드” -> `$ixion-patterns` (Docker Patterns)
 - “배포/deploy/release/rollback/CI/CD” -> `$ixion-patterns` (Deployment Patterns)
-- “E2E/Playwright 테스트/Cypress” -> `$ixion-e2e-testing`
-- “playwright-cli/playwright/브라우저 자동화/웹 스크린샷/폼 자동 입력/웹 데이터 추출” -> `$ixion-playwright-cli`
+- “E2E/Playwright 테스트/Cypress” -> `$ixion-playwright`
+- “playwright-cli/playwright/브라우저 자동화/웹 스크린샷/폼 자동 입력/웹 데이터 추출” -> `$ixion-playwright`
 - “빌드/컴파일/타입 에러/tsc/build fail” -> `$ixion-build-fix`
-- “어디서/찾아줘/검색/구조/흐름/연결” -> `$ixion-deepsearch`
-- “쇼피파이/Shopify/Liquid/theme/테마” -> `$ixion-shopify`
-- “컴퓨터비전/CV/OpenCV/YOLO/Segmentation/Detection” -> `$ixion-cv`
-- “모바일/React Native/Flutter/iOS/Android/Electron/Tauri” -> `$ixion-app`
-- “웹/프론트/백엔드/API/Next.js/React/Vue/Svelte” -> `$ixion-web`
-- “CLI/라이브러리/SDK/패키징/릴리즈” -> `$ixion-software`
+- “어디서/찾아줘/검색/구조/흐름/연결” -> `$ixion-analyze` (Deep Search 모드)
+- “쇼피파이/Shopify/Liquid/theme/테마” -> `$ixion-domains` (Shopify)
+- “컴퓨터비전/CV/OpenCV/YOLO/Segmentation/Detection” -> `$ixion-domains` (CV)
+- “모바일/React Native/Flutter/iOS/Android/Electron/Tauri” -> `$ixion-domains` (App)
+- “웹/프론트/백엔드/API/Next.js/React/Vue/Svelte” -> `$ixion-domains` (Web)
+- “CLI/라이브러리/SDK/패키징/릴리즈” -> `$ixion-domains` (Software)
 - “만들어줘/고쳐줘/리팩터링” -> `$ixion-orchestrator`
 - “기획/설계/문서/정리” -> `$ixion-pdca`
 - “테스트/빌드/린트/검증/ultraqa/통과할때까지” -> `$ixion-verify`

@@ -27,7 +27,7 @@ metadata:
    - 범위(In/Out)
    - 성공조건(관찰 가능)
 2. 내부 근거(코드베이스)
-   - 코드 위치/흐름 파악이 목표면: `$ixion-deepsearch`
+   - 코드 위치/흐름 파악이 목표면: `$ixion-analyze` (Deep Search 모드)
    - 변경까지 이어질 가능성이 크면: `$ixion-orchestrator`로 탐색 단계 포함
 3. 외부 근거(문서/웹)
    - NotebookLM을 사용해 소스를 모으고 요약/질의를 수행한다.
@@ -46,4 +46,3 @@ metadata:
 - 근거(외부):
 - 리스크/반례:
 - 다음 액션:
-

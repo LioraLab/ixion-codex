@@ -36,29 +36,20 @@
 - `$ixion-bkit-system`: bkit 플러그인 맵(templates/skills/agents/hooks/scripts/system 네비게이션)
 - `$ixion-development-pipeline`: 9-Phase 개발 파이프라인(뭐부터/순서/다음 단계)
 - `$ixion-zero-script-qa`: 테스트 코드 없이 로그 기반 QA(구조화 로그/모니터링)
-- `$ixion-starter`: (프리셋) Starter 레벨(초보/정적 웹)
-- `$ixion-dynamic`: (프리셋) Dynamic 레벨(bkend.ai BaaS 중심)
-- `$ixion-enterprise`: (프리셋) Enterprise 레벨(인프라/운영 전제)
+- `$ixion-presets`: (프리셋) Starter/Dynamic/Enterprise 레벨 선택
 - `$ixion-bkend`: bkend.ai 통합(개념/연결/MCP/인증/데이터/스토리지/예제)
-- `$ixion-plan`: 구현 전에 요구사항/성공조건/검증을 포함한 실행 계획 생성
-- `$ixion-analyze`: 코드 변경 없이 원인 분석(버그/성능/아키텍처/의존성)
+- `$ixion-analyze`: 코드 변경 없이 원인 분석 + 코드 위치/흐름 탐색(Deep Search)
 - `$ixion-deepinit`: 계층형 AGENTS.md 생성/갱신(코드베이스 온보딩)
 - `$ixion-git-master`: Git 작업(원자 커밋/리베이스/히스토리 정리)
 - `$ixion-research`: 리서치(내부 코드 + 외부 문서 근거 정리)
 - `$ixion-frontend-ui-ux`: 프론트엔드 UI/UX(반응형/접근성/상태 포함)
 - `$ixion-patterns`: 패턴/체크리스트 묶음(API 설계/DB 마이그레이션/Postgres/Docker/배포)
-- `$ixion-e2e-testing`: E2E 테스트(Playwright) 패턴/구성/CI 아티팩트
-- `$ixion-playwright-cli`: `playwright-cli`로 브라우저 자동화(웹 탐색/입력/스크린샷/네트워크/디버깅)
-- `$ixion-web`: 웹 개발 프리셋(프론트/백엔드/풀스택)
-- `$ixion-app`: 앱 개발 프리셋(모바일/데스크톱)
-- `$ixion-software`: 소프트웨어/CLI 프리셋(패키징/릴리즈 포함)
-- `$ixion-cv`: 컴퓨터비전 프리셋(데이터/추론/평가/재현성)
-- `$ixion-shopify`: Shopify 테마 프리셋(Liquid/sections/blocks/schema)
-- `$ixion-deepsearch`: 코드 위치/흐름 파악(읽기 전용)
+- `$ixion-playwright`: Playwright(E2E + 브라우저 자동화/playwright-cli)
+- `$ixion-domains`: 도메인 프리셋(Web/App/Software/CV/Shopify)
 - `$ixion-build-fix`: 빌드/타입 에러 최소 수정으로 해결
 - `$ixion-core`: 기본 규칙과 가드레일
 - `$ixion-orchestrator`: 멀티 에이전트 파이프라인(탐색-구현-검증)
-- `$ixion-pdca`: 문서화(Plan/Design/Analysis/Report)
+- `$ixion-pdca`: 문서화(Plan/Design/Analysis/Report) + Plan 작성 모드(요구사항/범위 합의)
 - `$ixion-verify`: 검증 루프(테스트/빌드/린트)
 - `$ixion-review`: 코드 리뷰(회귀/리스크/테스트 누락)
 - `$ixion-security`: 보안/권한 점검
@@ -77,7 +68,7 @@ $ixion 로그인 기능 추가해줘. (JWT + RBAC, 테스트 포함)
 ```
 
 ### 1.1) 에이전트형 엔트리포인트(선택)
-역할(Agent) 기반은 **옵트인**이다. 사용자가 “에이전트로/agent mode/agent로”를 명시했거나, `$ixion-agent-*`를 직접 호출하는 경우에만 사용한다.
+역할(Agent) 기반은 **옵트인**이다. 사용자가 “에이전트로/agent mode/agent로”를 명시한 경우에만 `$ixion-agent-executor`로 진입한다.
 지원 역할 목록/매핑은 `.codex/.ixion/PLUGINS.md`를 기준으로 한다.
 
 예시:
@@ -89,9 +80,9 @@ $ixion-review 이 PR 변경사항 리뷰해줘. (회귀/리스크/테스트 공�
 
 도메인 프리셋 예시:
 ```text
-$ixion-shopify 상품 카드 섹션에 배지(badge) 옵션 추가해줘. (접근성 포함)
-$ixion-cv 이미지 1장 입력받아 객체 탐지 결과를 JSON으로 출력하는 CLI 만들어줘.
-$ixion-app Flutter에서 로그인 폼 UI + 입력 검증 + 에러 상태까지 구현해줘.
+$ixion-domains (도메인: Shopify) 상품 카드 섹션에 배지(badge) 옵션 추가해줘. (접근성 포함)
+$ixion-domains (도메인: CV) 이미지 1장 입력받아 객체 탐지 결과를 JSON으로 출력하는 CLI 만들어줘.
+$ixion-domains (도메인: App) Flutter에서 로그인 폼 UI + 입력 검증 + 에러 상태까지 구현해줘.
 ```
 
 ### 2) 새 기능(문서화 포함) 권장 흐름

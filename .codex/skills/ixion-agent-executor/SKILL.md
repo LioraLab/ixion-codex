@@ -24,25 +24,25 @@ metadata:
 주 익션(Primary) 선택:
 - 개발 파이프라인/뭐부터/순서/phase → `$ixion-development-pipeline`
 - 빌드/타입/의존성 에러 → `$ixion-build-fix`
-- 코드 위치/흐름 파악(읽기 전용) → `$ixion-deepsearch`
+- 코드 위치/흐름 파악(읽기 전용) → `$ixion-analyze` (Deep Search 모드)
 - 원인 분석(코드 변경 없이) → `$ixion-analyze`
-- 계획/요구사항/합의 → `$ixion-plan`
+- 계획/요구사항/합의 → `$ixion-pdca` (Plan 작성 모드)
 - UI/UX(프론트엔드) → `$ixion-frontend-ui-ux`
 - API 설계/계약/응답 포맷 → `$ixion-patterns` (REST API Design)
 - DB 마이그레이션/스키마 변경 → `$ixion-patterns` (DB Migrations)
 - Postgres/SQL/인덱스/RLS → `$ixion-patterns` (Postgres Patterns)
 - Docker/Dockerfile/컨테이너 → `$ixion-patterns` (Docker Patterns)
 - 배포/릴리즈/롤백/CI/CD → `$ixion-patterns` (Deployment Patterns)
-- E2E/Playwright 테스트/Cypress → `$ixion-e2e-testing`
-- 브라우저 자동화/스크린샷/웹 데이터 추출(playwright-cli) → `$ixion-playwright-cli`
+- E2E/Playwright 테스트/Cypress → `$ixion-playwright`
+- 브라우저 자동화/스크린샷/웹 데이터 추출(playwright-cli) → `$ixion-playwright`
 - Zero Script QA(로그 기반 검증) → `$ixion-zero-script-qa`
 - Git 작업(커밋/리베이스/브랜치) → `$ixion-git-master`
 - 리서치(내부 코드 + 외부 문서) → `$ixion-research`
-- bkend/bkend.ai/BaaS/mcp__bkend → `$ixion-bkend` (MVP/운영 최소 풀스택이면 `$ixion-dynamic`도 선택)
-- 엔터프라이즈(마이크로서비스/k8s/terraform) → `$ixion-enterprise`
-- 초보/정적 웹(Starter 레벨) → `$ixion-starter`
-- Shopify 테마 → `$ixion-shopify`
-- 웹/앱/소프트웨어/CV → `$ixion-web` / `$ixion-app` / `$ixion-software` / `$ixion-cv`
+- bkend/bkend.ai/BaaS/mcp__bkend → `$ixion-bkend` (MVP/운영 최소 풀스택이면 `$ixion-presets`(Dynamic)도 선택)
+- 엔터프라이즈(마이크로서비스/k8s/terraform) → `$ixion-presets` (Enterprise)
+- 초보/정적 웹(Starter 레벨) → `$ixion-presets` (Starter)
+- Shopify 테마 → `$ixion-domains` (Shopify)
+- 웹/앱/소프트웨어/CV → `$ixion-domains` (Web/App/Software/CV)
 - 구현/버그/리팩터링(넓거나 불확실) → `$ixion-orchestrator`
 - 그 외/애매함 → `$ixion` (허브)
 

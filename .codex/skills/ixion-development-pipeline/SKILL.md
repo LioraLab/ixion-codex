@@ -38,7 +38,7 @@ metadata:
 
 ## 연결(권장)
 - 큰 기능이면 먼저 `$ixion-pdca`로 Plan/Design을 고정한다.
-- 실제 구현은 `$ixion-orchestrator` 또는 도메인 프리셋(`$ixion-web|app|software|shopify|cv`)로 진행한다.
+- 실제 구현은 `$ixion-orchestrator` 또는 `$ixion-domains`(Web/App/Software/CV/Shopify)로 진행한다.
 - 완료 선언 전 `$ixion-verify`로 최소 1개 검증을 실행한다.
 
 ---
@@ -98,7 +98,7 @@ metadata:
   - 인증/인가가 있으면 `$ixion-security` 동반
   - 테스트 코드 대신 로그 기반 검증이 필요하면 `$ixion-zero-script-qa` 동반
 - 참고
-  - bkend.ai(BaaS)를 쓰는 “Dynamic” 흐름이면: `$ixion-dynamic` + 필요 시 `$ixion-bkend`
+  - bkend.ai(BaaS)를 쓰는 “Dynamic” 흐름이면: `$ixion-presets`(Dynamic) + `$ixion-bkend`
 
 ### Phase 5: Design System
 - 목표: 디자인 토큰(Color/Spacing/Typography 등)과 핵심 컴포넌트를 “재사용 자산”으로 만든다.

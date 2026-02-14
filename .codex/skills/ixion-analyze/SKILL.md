@@ -1,6 +1,6 @@
 ---
 name: ixion-analyze
-description: 코드 변경 없이 원인 분석(아키텍처/버그/성능/의존성)을 수행하고, 근거 기반 결론과 다음 액션을 제시한다.
+description: 코드 변경 없이 원인 분석(아키텍처/버그/성능/의존성)과 코드 위치/흐름 탐색(Deep Search)을 수행하고, 근거 기반 결론과 다음 액션을 제시한다.
 metadata:
   short-description: Deep analysis without changes
 ---
@@ -22,8 +22,6 @@ metadata:
 ## 쓰면 안 되는 경우
 - 사용자가 “고쳐줘/구현해줘”를 원할 때
   - 권장: `$ixion-orchestrator` (변경 + 검증까지)
-- 단순 위치 찾기만 필요할 때
-  - 권장: `$ixion-deepsearch`
 - 빌드/타입 에러를 최소 변경으로 해결해야 할 때
   - 권장: `$ixion-build-fix`
 
@@ -50,3 +48,18 @@ metadata:
 - Recommendation (추천 1개)
 - Next actions (다음 익션/커맨드)
 
+## Deep Search 모드(통합)
+이 스킬은 “Deep Search” 기능을 포함한다. 아래 요청이면 “Deep Search 모드”로 처리한다.
+- "이 기능 어디서 처리해?"
+- "이 에러 어디서 나?"
+- "이 흐름 어떻게 연결돼?"
+
+워크플로우:
+1. broad: `rg`로 키워드/에러 문자열/엔드포인트/클래스명을 여러 패턴으로 병렬 검색한다.
+2. narrow: 상위 3-10개 파일을 읽고 import/export, 호출부를 따라간다.
+3. map: "엔트리포인트 → 핵심 로직 → 외부 경계(DB/API/UI)" 흐름을 요약한다.
+4. output: Primary locations / Related files / Key insights / Suggested next step
+
+출력 규칙:
+- 파일 경로는 레포 기준 명확한 경로로 제시한다.
+- 추측 대신 근거(검색 결과/코드 스니펫) 기반으로 말한다.

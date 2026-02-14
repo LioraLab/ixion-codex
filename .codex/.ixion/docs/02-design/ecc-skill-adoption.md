@@ -20,12 +20,12 @@
 
 | ECC skill | Ixion skill | 목적 |
 |---|---|---|
-| `api-design` | `ixion-api-design` | REST API 계약/규약 고정 |
-| `database-migrations` | `ixion-database-migrations` | 안전한 마이그레이션 계획/순서 |
-| `postgres-patterns` | `ixion-postgres-patterns` | 인덱스/RLS/락/쿼리 패턴 |
-| `docker-patterns` | `ixion-docker-patterns` | Dockerfile/빌드/캐시/권한 |
-| `deployment-patterns` | `ixion-deployment-patterns` | 배포/롤백/가드레일 |
-| `e2e-testing` | `ixion-e2e-testing` | E2E 구조/실행/CI 아티팩트 |
+| `api-design` | `ixion-patterns` | REST API Design 패턴 섹션 |
+| `database-migrations` | `ixion-patterns` | DB Migrations 패턴 섹션 |
+| `postgres-patterns` | `ixion-patterns` | Postgres Patterns 패턴 섹션 |
+| `docker-patterns` | `ixion-patterns` | Docker Patterns 패턴 섹션 |
+| `deployment-patterns` | `ixion-patterns` | Deployment Patterns 패턴 섹션 |
+| `e2e-testing` | `ixion-playwright` | Playwright(E2E + 브라우저 자동화) |
 
 ## SSOT 경로
 - ECC skills SSOT: `.codex/.ixion/plugins/everything-claude-code/skills/*/SKILL.md`

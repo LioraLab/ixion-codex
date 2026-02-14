@@ -30,6 +30,32 @@ metadata:
 - Plan이 합의되면 Design을 만든다.
 - 구현 후에는 Analysis(갭/리스크)와 Report(결과/검증)를 남긴다.
 
+## Plan 작성 모드(요구사항/범위 합의)
+
+아래 상황이면 PDCA에서 **Plan 문서만** 먼저 만든다.
+- 요청이 넓고 애매해서 지금 바로 구현하면 스코프가 터질 때
+- 여러 선택지(아키텍처/라이브러리/API 설계) 중 결정을 내려야 할 때
+- 실패 비용이 큰 작업(결제/보안/마이그레이션/배포)
+
+인터뷰 규칙(중요):
+- 질문은 한 번에 1개만 한다(여러 개 묶지 않기).
+- “코드베이스에서 확인 가능한 사실”은 사용자에게 묻지 말고 먼저 찾아본다.
+- “지금 안 물으면 실패”할 질문만 한다.
+
+Plan 산출물(권장 체크리스트):
+- Requirements Summary
+- Acceptance Criteria (테스트 가능하게)
+- Implementation Steps (가능하면 파일 힌트 포함)
+- Risks & Mitigations
+- Verification Steps (최소 1개 커맨드)
+
+계획 승인 후 실행 연결:
+- 구현: `$ixion-orchestrator`
+- 완료 전 검증: `$ixion-verify`
+
+템플릿:
+- Plan: `.codex/.ixion/templates/plan.template.md`
+
 ## 템플릿
 가능하면 `.codex/.ixion/templates/`의 템플릿을 복제해 사용한다.
 - Plan: `.codex/.ixion/templates/plan.template.md`
