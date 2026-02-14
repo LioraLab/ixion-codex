@@ -20,6 +20,43 @@
   - 또는 플러그인별 `git pull` 후 `bash .codex/.ixion/scripts/sync-from-plugins.sh`
 - 현재 스냅샷: `.codex/.ixion/PLUGIN-VERSIONS.md`
 
+## 다른 프로젝트에 설치(어느 경로에서도)
+익션을 “이 레포(SSOT)에서 관리하면서”, 다른 프로젝트에 그대로 설치하려면 아래 스크립트를 쓴다.
+
+권장 설치 방식:
+- **개발 중에는 `--mode symlink`**: ixion-codex에서 업데이트하면 다른 프로젝트도 즉시 반영됨
+- **배포/고정 스냅샷은 `--mode copy`**: 특정 시점의 익션을 프로젝트에 고정
+
+### 1) symlink 설치(권장)
+```bash
+# ixion-codex 경로에서 실행하거나, 절대경로로 실행해도 됨
+bash /path/to/ixion-codex/.codex/.ixion/scripts/install-ixion.sh /path/to/your-project --mode symlink
+```
+
+### 2) copy 설치(스냅샷 고정)
+```bash
+bash /path/to/ixion-codex/.codex/.ixion/scripts/install-ixion.sh /path/to/your-project --mode copy
+```
+
+### 3) 플러그인까지 벤더링(copy)
+플러그인(bkit/OMC/ECC)까지 프로젝트에 같이 넣고 싶다면:
+```bash
+bash /path/to/ixion-codex/.codex/.ixion/scripts/install-ixion.sh /path/to/your-project --mode symlink --plugins copy
+```
+
+### 4) 덮어쓰기
+타겟 프로젝트에 기존 `.codex/skills` 또는 `.codex/.ixion`이 이미 있다면 기본 동작은 중단한다.
+덮어쓰려면:
+```bash
+bash /path/to/ixion-codex/.codex/.ixion/scripts/install-ixion.sh /path/to/your-project --mode symlink --force
+```
+
+### 설치 결과(생성/갱신되는 경로)
+- `.codex/skills/*` : ixion 스킬 세트
+- `.codex/.ixion/*` : ixion 런타임 자산(문서/템플릿/스크립트)
+  - `.codex/.ixion/docs/` : 프로젝트 산출물(Plan/Design/Analysis/Report)
+  - `.codex/.ixion/state/` : 실행 상태/체크포인트
+
 ## 한눈에 고르기(추천)
 익션을 “어떤 걸로 시작해야 하지?”가 애매할 때는 아래 문서를 먼저 본다.
 
