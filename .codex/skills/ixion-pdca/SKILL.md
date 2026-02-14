@@ -47,4 +47,4 @@ metadata:
 
 ## 같이 쓰기(권장)
 - “뭐부터/어떤 순서로”가 애매하면: `$ixion-development-pipeline`
-- 특정 Phase를 진행 중이면: `$ixion-pipeline-phase-*` (예: `ixion-pipeline-phase-2-convention`)
+- 특정 Phase를 진행 중이면: `$ixion-development-pipeline`에서 해당 Phase 체크리스트를 바로 사용한다(예: “Phase 2 컨벤션”).

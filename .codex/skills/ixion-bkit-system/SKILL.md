@@ -15,10 +15,9 @@ metadata:
 - 템플릿(derived copy): `.codex/.ixion/templates/` (동기화: `.codex/.ixion/scripts/sync-from-plugins.sh`)
 
 ## 구성요소 매핑(요약)
-- templates/ → `$ixion-pdca`, `$ixion-development-pipeline` (+ phase 스킬들)
-- skills/ → ixion 스킬로 이식(개발 파이프라인/phase/레벨 프리셋/bkend 등)
-- agents/ → `ixion-agent-*`로 이식(옵트인)
+- templates/ → `$ixion-pdca`, `$ixion-development-pipeline` (Phase별 체크리스트 포함)
+- skills/ → ixion 스킬로 이식(개발 파이프라인/레벨 프리셋/bkend/zero-script-qa 등)
+- agents/ → SSOT 프롬프트 참고(옵트인 진입점은 `$ixion-agent-executor` 1개)
 - output-styles/ → Codex에서 “자동 적용”은 어렵고, 출력 포맷 참고용(문서)
 - hooks/, scripts/ → Claude Code 전용 자동화가 섞여 있어 Codex에선 참고/수동 실행 중심
 - bkit-system/ → 철학/트리거/시나리오 지식베이스(참고)
-

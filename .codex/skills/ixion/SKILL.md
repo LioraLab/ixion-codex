@@ -22,7 +22,7 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 
 ## 기본 전략 (추천)
 - 프롬프트(요청문) 생성: `$ixion-prompt`
-- 역할 기반 엔트리포인트(옵트인): 사용자가 “에이전트로/agent mode/agent로”를 **명시**했을 때만 `$ixion-agent-*` (explore/architect/executor/reviewer/verifier 등)
+- 역할 기반 엔트리포인트(옵트인): 사용자가 “에이전트로/agent mode/agent로”를 **명시**했을 때만 `$ixion-agent-executor`
 - bkit 맵/탐색(선택): `$ixion-bkit-system`
 - 계획/요구사항 수렴(인터뷰/합의형): `$ixion-plan`
 - 원인 분석(코드 변경 없이): `$ixion-analyze`
@@ -33,6 +33,7 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 - 개발 파이프라인(Phase): `$ixion-development-pipeline`
 - Zero Script QA(로그 기반 검증): `$ixion-zero-script-qa`
 - 레벨 프리셋(선택): `$ixion-starter`, `$ixion-dynamic`, `$ixion-enterprise`
+- bkend.ai(BaaS) 통합(선택): `$ixion-bkend`
 - 도메인 프리셋:
   - 웹 개발: `$ixion-web`
   - 앱 개발: `$ixion-app`
@@ -40,11 +41,7 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
   - 컴퓨터비전: `$ixion-cv`
   - Shopify 테마: `$ixion-shopify`
 - 패턴/체크리스트(선택):
-  - API 설계: `$ixion-api-design`
-  - DB 마이그레이션: `$ixion-database-migrations`
-  - PostgreSQL 패턴: `$ixion-postgres-patterns`
-  - Docker 패턴: `$ixion-docker-patterns`
-  - 배포 패턴: `$ixion-deployment-patterns`
+  - API/DB/Postgres/Docker/배포 패턴: `$ixion-patterns`
   - E2E 테스트: `$ixion-e2e-testing`
   - 브라우저 자동화(Playwright CLI): `$ixion-playwright-cli`
 - 코드 위치/흐름 파악(읽기 전용): `$ixion-deepsearch`
@@ -61,23 +58,23 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 ## 라우팅 규칙
 요청을 받으면 아래 중 하나로 즉시 라우팅한다(질문은 “지금 안 물으면 실패”할 때만 1-2개).
 - “에이전트로/agent mode/agent로” -> 역할 힌트가 없으면 `$ixion-agent-executor`
-  역할 힌트가 있으면 해당 엔트리포인트로 라우팅: explore/architect/executor/build-fixer/go-build-resolver/code-reviewer/go-reviewer/python-reviewer/security-reviewer/verifier/planner/analyst/critic/writer/designer/researcher/git-master/database-reviewer/doc-updater/e2e-runner/refactor-cleaner/tdd-guide/bkend-expert/code-analyzer/cto-lead/design-validator/enterprise-expert/frontend-architect/gap-detector/infra-architect/pdca-iterator/pipeline-guide/product-manager/qa-monitor/qa-strategist/report-generator/security-architect/starter-guide -> `$ixion-agent-*`
 - “프롬프트/prompt/요청문/템플릿” -> `$ixion-prompt`
 - “bkit” -> `$ixion-bkit-system`
 - “개발 파이프라인/development pipeline/phase/뭐부터/어디서부터/순서/where to start” -> `$ixion-development-pipeline`
 - “zero script qa/제로 스크립트 QA/로그 기반 QA/로그로 검증” -> `$ixion-zero-script-qa`
-- “phase-1/phase 1/schema/terminology/용어/용어집/glossary” -> `$ixion-pipeline-phase-1-schema`
-- “phase-2/phase 2/convention/컨벤션/코딩 규칙/환경변수 규칙” -> `$ixion-pipeline-phase-2-convention`
-- “phase-3/phase 3/mockup/목업/prototype/와이어프레임” -> `$ixion-pipeline-phase-3-mockup`
-- “phase-4/phase 4/zero script qa/api 구현(phase)” -> `$ixion-pipeline-phase-4-api`
-- “phase-5/phase 5/design system/디자인 시스템(phase)” -> `$ixion-pipeline-phase-5-design-system`
-- “phase-6/phase 6/ui integration/UI 구현(phase)” -> `$ixion-pipeline-phase-6-ui-integration`
-- “phase-7/phase 7/seo/security/검색 최적화” -> `$ixion-pipeline-phase-7-seo-security`
-- “phase-8/phase 8/gap analysis/아키텍처 리뷰/컨벤션 리뷰” -> `$ixion-pipeline-phase-8-review`
-- “phase-9/phase 9/deployment/배포 준비” -> `$ixion-pipeline-phase-9-deployment`
+- “phase-1/phase 1/schema/terminology/용어/용어집/glossary” -> `$ixion-development-pipeline` (Phase 1)
+- “phase-2/phase 2/convention/컨벤션/코딩 규칙/환경변수 규칙” -> `$ixion-development-pipeline` (Phase 2)
+- “phase-3/phase 3/mockup/목업/prototype/와이어프레임” -> `$ixion-development-pipeline` (Phase 3)
+- “phase-4/phase 4/zero script qa/api 구현(phase)” -> `$ixion-development-pipeline` (Phase 4)
+- “phase-5/phase 5/design system/디자인 시스템(phase)” -> `$ixion-development-pipeline` (Phase 5)
+- “phase-6/phase 6/ui integration/UI 구현(phase)” -> `$ixion-development-pipeline` (Phase 6)
+- “phase-7/phase 7/seo/security/검색 최적화” -> `$ixion-development-pipeline` (Phase 7)
+- “phase-8/phase 8/gap analysis/아키텍처 리뷰/컨벤션 리뷰” -> `$ixion-development-pipeline` (Phase 8)
+- “phase-9/phase 9/deployment/배포 준비” -> `$ixion-development-pipeline` (Phase 9)
 - “starter/초보/비개발자” -> `$ixion-starter`
 - “정적 웹/포트폴리오/랜딩페이지” -> `$ixion-web` (초보/비개발자면 `$ixion-starter`도 선택)
-- “bkend/bkend.ai/BaaS” -> `$ixion-dynamic`
+- “bkend/bkend.ai/BaaS/mcp__bkend” -> `$ixion-bkend`
+- “dynamic/MVP/운영 최소 풀스택” -> `$ixion-dynamic`
 - “enterprise/엔터프라이즈/microservices/kubernetes/terraform” -> `$ixion-enterprise`
 - “plan/계획/요구사항/스펙/범위 정리/consensus/ralplan” -> `$ixion-plan`
 - “analyze/분석/investigate/원인/왜 이래/왜 이러지/root cause” -> `$ixion-analyze`
@@ -85,11 +82,11 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 - “git/커밋/commit/rebase/squash/브랜치/merge/cherry-pick” -> `$ixion-git-master`
 - “리서치/research/조사/근거/비교/문서 읽고 정리” -> `$ixion-research`
 - “UI/UX/디자인/스타일/컴포넌트 UI/반응형/접근성” -> `$ixion-frontend-ui-ux`
-- “API 설계/REST/endpoint/응답 포맷/페이지네이션/버전” -> `$ixion-api-design`
-- “마이그레이션/migration/스키마 변경/DDL/백필/backfill” -> `$ixion-database-migrations`
-- “Postgres/SQL/인덱스/index/RLS/lock/데드락” -> `$ixion-postgres-patterns`
-- “Docker/dockerfile/컨테이너/이미지 빌드” -> `$ixion-docker-patterns`
-- “배포/deploy/release/rollback/CI/CD” -> `$ixion-deployment-patterns`
+- “API 설계/REST/endpoint/응답 포맷/페이지네이션/버전” -> `$ixion-patterns` (REST API Design)
+- “마이그레이션/migration/스키마 변경/DDL/백필/backfill” -> `$ixion-patterns` (DB Migrations)
+- “Postgres/SQL/인덱스/index/RLS/lock/데드락” -> `$ixion-patterns` (Postgres Patterns)
+- “Docker/dockerfile/컨테이너/이미지 빌드” -> `$ixion-patterns` (Docker Patterns)
+- “배포/deploy/release/rollback/CI/CD” -> `$ixion-patterns` (Deployment Patterns)
 - “E2E/Playwright 테스트/Cypress” -> `$ixion-e2e-testing`
 - “playwright-cli/playwright/브라우저 자동화/웹 스크린샷/폼 자동 입력/웹 데이터 추출” -> `$ixion-playwright-cli`
 - “빌드/컴파일/타입 에러/tsc/build fail” -> `$ixion-build-fix`

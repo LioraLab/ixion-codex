@@ -31,6 +31,5 @@ metadata:
 - `.codex/.ixion/docs/03-analysis/zero-script-qa-YYYYMMDD.md`
 
 ## 같이 쓰기(권장)
-- 계약/에러 포맷을 먼저 고정해야 하면 `$ixion-api-design`
+- 계약/에러 포맷을 먼저 고정해야 하면 `$ixion-patterns` (REST API Design)
 - 실제 브라우저 조작/스크린샷이 필요하면 `$ixion-playwright-cli`
-

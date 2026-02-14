@@ -32,6 +32,7 @@
 |Shopify 테마(Liquid/sections)|`$ixion-shopify`|`$ixion-verify`|Shopify 전용 노트북 SSOT도 병행.|
 |컴퓨터비전(CV)|`$ixion-cv`|`$ixion-verify`|샘플 스모크 실행 기준 고정.|
 |UI/UX만 집중(접근성/반응형 포함)|`$ixion-frontend-ui-ux`|`$ixion-verify`|디자인+구현+상태(로딩/에러/빈) 포함.|
+|API/DB/Postgres/Docker/배포 “패턴/체크리스트”가 필요함|`$ixion-patterns`|`$ixion-security`, `$ixion-verify`, `$ixion-tdd`|필요한 패턴만 골라 적용.|
 |Git 작업(커밋/리베이스/브랜치 정리)|`$ixion-git-master`|-|안전한 원자 커밋 기본.|
 |리서치/비교/근거 정리(외부 문서 포함)|`$ixion-research`|-|최신 근거/링크 중심.|
 |빌드/타입/의존성 에러를 “최소 변경”으로 해결|`$ixion-build-fix`|`$ixion-verify`|리팩터링 금지, 에러만 제거.|
@@ -39,12 +40,13 @@
 |리뷰만(회귀/리스크/테스트 공백)|`$ixion-review`|`$ixion-security`|수정까지면 orchestrator로.|
 |보안/권한/취약점 점검|`$ixion-security`|`$ixion-verify`|인증/인가/비밀정보/업로드 포함 시 필수.|
 |TDD로 진행|`$ixion-tdd`|`$ixion-verify`|Red-Green-Refactor 강제.|
-|새 프로젝트에서 “뭐부터/순서/phase”|`$ixion-development-pipeline`|`$ixion-pipeline-phase-*`, `$ixion-pdca`|9-Phase 가이드.|
-|특정 phase 딥다이브(phase-1~9)|`$ixion-pipeline-phase-*`|`$ixion-pdca`|Phase별 체크리스트.|
-|테스트 코드 없이 로그로 QA(Zero Script QA)|`$ixion-zero-script-qa`|`$ixion-agent-qa-monitor`, `$ixion-playwright-cli`|Docker 로그/구조화 로그 기반.|
+|새 프로젝트에서 “뭐부터/순서/phase”|`$ixion-development-pipeline`|`$ixion-pdca`|9-Phase 가이드(+ Phase별 체크리스트 포함).|
+|특정 phase 딥다이브(phase-1~9)|`$ixion-development-pipeline`|`$ixion-pdca`|Phase 번호를 지정해서 체크리스트 사용.|
+|테스트 코드 없이 로그로 QA(Zero Script QA)|`$ixion-zero-script-qa`|`$ixion-playwright-cli`|Docker 로그/구조화 로그 기반.|
 |초보/비개발자, 정적 웹 중심|`$ixion-starter`|`$ixion-web`|완주 우선, 과한 스택 금지.|
-|bkend.ai(BaaS) 기반 풀스택|`$ixion-dynamic`|`$ixion-bkend-*`|운영 최소로 인증/DB/스토리지.|
-|엔터프라이즈 전제(MSA/k8s/terraform)|`$ixion-enterprise`|`$ixion-plan`, `$ixion-security`, `$ixion-deployment-patterns`|초반 합의/게이트가 핵심.|
+|bkend.ai(BaaS) 연결/인증/데이터/스토리지|`$ixion-bkend`|`$ixion-dynamic`|bkend 통합 자체가 핵심일 때.|
+|bkend.ai(BaaS) 기반 풀스택|`$ixion-dynamic`|`$ixion-bkend`|운영 최소로 인증/DB/스토리지.|
+|엔터프라이즈 전제(MSA/k8s/terraform)|`$ixion-enterprise`|`$ixion-plan`, `$ixion-security`, `$ixion-patterns`|초반 합의/게이트가 핵심.|
 
 ---
 
@@ -67,13 +69,6 @@ Agent mode는 사용자가 “에이전트로/agent mode”를 **명시**했을 
 |내 의도|추천 agent|설명|
 |---|---|---|
 |그냥 에이전트가 알아서 실행까지|`$ixion-agent-executor`|주 익션 1개 + 동반 익션을 스스로 골라 실행.|
-|코드 변경 없이 분석/권고안|`$ixion-agent-architect`|Observations/근거/추천안 중심.|
-|요구사항/스코프/우선순위 합의(PM)|`$ixion-agent-product-manager`|MoSCoW + Acceptance Criteria 고정.|
-|개발 순서/phase 다음 단계|`$ixion-agent-pipeline-guide`|Phase 추정 + 다음 체크리스트.|
-|코드 리뷰(읽기 전용)|`$ixion-agent-code-reviewer`|회귀/리스크/테스트 공백 중심.|
-|보안 리뷰(읽기 전용)|`$ixion-agent-security-reviewer`|OWASP 관점 점검 + 최소 변경 수정안.|
-|검증(PASS/FAIL) 판정|`$ixion-agent-verifier`|실제 커맨드 실행 근거로만 판정.|
-|로그 기반 QA 모니터링|`$ixion-agent-qa-monitor`|Zero Script QA 실전 운영.|
 
 ---
 
@@ -83,4 +78,3 @@ Agent mode는 사용자가 “에이전트로/agent mode”를 **명시**했을 
 - 프롬프트 라우터/템플릿: `.codex/skills/ixion-prompt/SKILL.md`
 - 플러그인 벤더링 매핑: `.codex/.ixion/PLUGINS.md`
 - 사용자용 인덱스: `.codex/.ixion/README.md`
-

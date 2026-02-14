@@ -35,27 +35,18 @@
 - `$ixion-prompt`: ixion을 잘 타도록 "작업 프롬프트(요청문)"를 생성
 - `$ixion-bkit-system`: bkit 플러그인 맵(templates/skills/agents/hooks/scripts/system 네비게이션)
 - `$ixion-development-pipeline`: 9-Phase 개발 파이프라인(뭐부터/순서/다음 단계)
-- `$ixion-pipeline-phase-*`: Phase별 가이드(1~9)
 - `$ixion-zero-script-qa`: 테스트 코드 없이 로그 기반 QA(구조화 로그/모니터링)
 - `$ixion-starter`: (프리셋) Starter 레벨(초보/정적 웹)
 - `$ixion-dynamic`: (프리셋) Dynamic 레벨(bkend.ai BaaS 중심)
 - `$ixion-enterprise`: (프리셋) Enterprise 레벨(인프라/운영 전제)
-- `$ixion-bkend-quickstart`: bkend.ai 개념/연결/흐름 정리
-- `$ixion-bkend-auth`: bkend 인증/RBAC/RLS 패턴
-- `$ixion-bkend-data`: bkend 테이블/CRUD/필터/페이지네이션 패턴
-- `$ixion-bkend-storage`: bkend 파일 업로드/가시성 패턴
-- `$ixion-bkend-cookbook`: bkend 예제/트러블슈팅
+- `$ixion-bkend`: bkend.ai 통합(개념/연결/MCP/인증/데이터/스토리지/예제)
 - `$ixion-plan`: 구현 전에 요구사항/성공조건/검증을 포함한 실행 계획 생성
 - `$ixion-analyze`: 코드 변경 없이 원인 분석(버그/성능/아키텍처/의존성)
 - `$ixion-deepinit`: 계층형 AGENTS.md 생성/갱신(코드베이스 온보딩)
 - `$ixion-git-master`: Git 작업(원자 커밋/리베이스/히스토리 정리)
 - `$ixion-research`: 리서치(내부 코드 + 외부 문서 근거 정리)
 - `$ixion-frontend-ui-ux`: 프론트엔드 UI/UX(반응형/접근성/상태 포함)
-- `$ixion-api-design`: REST API 설계 패턴/체크리스트(계약/에러/페이지네이션)
-- `$ixion-database-migrations`: DB 마이그레이션 패턴(락/다운타임/롤백/expand-contract)
-- `$ixion-postgres-patterns`: PostgreSQL 패턴(인덱스/RLS/락/쿼리)
-- `$ixion-docker-patterns`: Docker 패턴(Dockerfile/캐시/멀티스테이지/권한)
-- `$ixion-deployment-patterns`: 배포 패턴(릴리즈/롤백/가드레일)
+- `$ixion-patterns`: 패턴/체크리스트 묶음(API 설계/DB 마이그레이션/Postgres/Docker/배포)
 - `$ixion-e2e-testing`: E2E 테스트(Playwright) 패턴/구성/CI 아티팩트
 - `$ixion-playwright-cli`: `playwright-cli`로 브라우저 자동화(웹 탐색/입력/스크린샷/네트워크/디버깅)
 - `$ixion-web`: 웹 개발 프리셋(프론트/백엔드/풀스택)
@@ -92,8 +83,8 @@ $ixion 로그인 기능 추가해줘. (JWT + RBAC, 테스트 포함)
 예시:
 ```text
 $ixion-agent-executor 결제 플로우 버그 고쳐줘. 검증까지.
-$ixion-agent-architect 왜 이 API가 500을 내는지 원인 분석해줘. (코드 변경 없음)
-$ixion-agent-code-reviewer 이 PR 변경사항 리뷰해줘. (회귀/리스크/테스트 공백 위주)
+$ixion-analyze 왜 이 API가 500을 내는지 원인 분석해줘. (코드 변경 없음)
+$ixion-review 이 PR 변경사항 리뷰해줘. (회귀/리스크/테스트 공백 위주)
 ```
 
 도메인 프리셋 예시:

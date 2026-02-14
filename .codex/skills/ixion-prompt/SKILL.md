@@ -59,16 +59,8 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
   - 근거(코드 현실 + 문서)를 모아 결론/권고안을 내야 할 때.
 - UI/UX(프론트엔드): `$ixion-frontend-ui-ux`
   - UI/UX 작업을 접근성/반응형/상태(로딩/에러/빈상태)까지 포함해 끝낼 때.
-- API 설계(REST 계약/에러/페이지네이션): `$ixion-api-design`
-  - 엔드포인트/리소스/상태코드/에러 포맷/페이지네이션을 일관되게 잡아야 할 때.
-- DB 마이그레이션(락/다운타임/롤백): `$ixion-database-migrations`
-  - 스키마/데이터 변경을 안전한 단계(expand/contract)로 설계/적용해야 할 때.
-- PostgreSQL 패턴(인덱스/RLS/락): `$ixion-postgres-patterns`
-  - 느린 쿼리/인덱스/RLS/락/데드락 등 DB 운영 패턴이 필요한 경우.
-- Docker 패턴: `$ixion-docker-patterns`
-  - Dockerfile/이미지 빌드/캐시/멀티스테이지/권한을 정리해야 할 때.
-- 배포 패턴(CI/CD/롤백): `$ixion-deployment-patterns`
-  - 배포 절차/롤백/환경변수/릴리즈 가드레일을 정리해야 할 때.
+- 패턴/체크리스트(묶음): `$ixion-patterns`
+  - API 설계/DB 마이그레이션/Postgres/Docker/배포 패턴을 “필요한 것만” 골라 적용할 때.
 - E2E 테스트(Playwright): `$ixion-e2e-testing`
   - 핵심 여정을 E2E로 고정하고 CI에서 아티팩트까지 남겨야 할 때.
 - 브라우저 자동화(Playwright CLI): `$ixion-playwright-cli`
@@ -81,13 +73,13 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
   - Starter: 초보/정적 웹 중심
   - Dynamic: bkend.ai(BaaS)로 운영 최소 풀스택
   - Enterprise: MSA/인프라/운영 전제
-- bkend 세부(선택): `$ixion-bkend-quickstart`, `$ixion-bkend-auth|data|storage|cookbook`
+- bkend 통합(선택): `$ixion-bkend`
   - bkend 통합이 핵심인 작업에서만 동반 익션으로 붙인다(프롬프트 과다 분량 방지).
 - bkit 맵/탐색(선택): `$ixion-bkit-system`
   - bkit 플러그인 내부(templates/skills/agents/hooks/scripts)를 ixion 관점에서 빠르게 찾을 때.
-- 역할 기반 엔트리포인트(옵트인): `$ixion-agent-*`
+- 역할 기반 엔트리포인트(옵트인): `$ixion-agent-executor`
   - 사용자가 “에이전트로/agent mode/agent로”를 **명시**했을 때만 이 경로를 선택한다.
-  - 역할 힌트가 없으면 기본값은 `$ixion-agent-executor`(작업에 맞게 ixion 스킬을 스스로 선택하는 라우터).
+  - executor가 작업에 맞는 ixion 기능 스킬(주 1개 + 동반 0-3개)을 스스로 선택한다.
 - 허브/라우터: `$ixion`
   - 도메인/의도가 애매하거나, "그냥 알아서 최적 라우팅"이 목표일 때 1순위.
 - 도메인 프리셋: `$ixion-web`, `$ixion-app`, `$ixion-software`, `$ixion-cv`, `$ixion-shopify`
@@ -116,14 +108,14 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
 ## Workflow (Router)
 
 0. (에이전트 모드, 옵트인) 사용자가 “에이전트로/agent mode/agent로”를 **명시**했으면:
-   - 역할 힌트가 없으면 "주 익션"은 `$ixion-agent-executor`
-   - 역할 힌트가 있으면 "주 익션"은 해당 `$ixion-agent-*` (explore/architect/executor/build-fixer/go-build-resolver/code-reviewer/go-reviewer/python-reviewer/security-reviewer/verifier/planner/analyst/critic/writer/designer/researcher/git-master/database-reviewer/doc-updater/e2e-runner/refactor-cleaner/tdd-guide + bkend-expert/code-analyzer/cto-lead/design-validator/enterprise-expert/frontend-architect/gap-detector/infra-architect/pdca-iterator/pipeline-guide/product-manager/qa-monitor/qa-strategist/report-generator/security-architect/starter-guide)
+   - "주 익션"은 `$ixion-agent-executor`
    - 이 경우 아래 1)~의 기능 분류 라우터는 건너뛴다(에이전트가 스스로 ixion 스킬을 선택/조합).
 1. (요청 분류) 아래 중 하나로 "주 익션(Primary)"를 1개 고른다.
    - 개발 파이프라인/phase/뭐부터/순서 -> `$ixion-development-pipeline`
    - zero script qa/로그 기반 QA -> `$ixion-zero-script-qa`
    - starter/초보/비개발자 -> `$ixion-starter`
-   - bkend/bkend.ai/BaaS -> `$ixion-dynamic`
+   - bkend/bkend.ai/BaaS/mcp__bkend -> `$ixion-bkend`
+   - dynamic/MVP/운영 최소 풀스택 -> `$ixion-dynamic`
    - enterprise/microservices/k8s/terraform -> `$ixion-enterprise`
    - 계획/요구사항/합의 -> `$ixion-plan`
    - 원인 분석(코드 변경 없이) -> `$ixion-analyze`
@@ -131,11 +123,11 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
    - git 작업(커밋/리베이스/브랜치) -> `$ixion-git-master`
    - 리서치/조사/근거 정리 -> `$ixion-research`
    - UI/UX(프론트엔드) -> `$ixion-frontend-ui-ux`
-   - API 설계/계약/응답 포맷 -> `$ixion-api-design`
-   - DB 마이그레이션/스키마 변경 -> `$ixion-database-migrations`
-   - Postgres/SQL/인덱스/RLS -> `$ixion-postgres-patterns`
-   - Docker/Dockerfile/컨테이너 -> `$ixion-docker-patterns`
-   - 배포/릴리즈/롤백/CI/CD -> `$ixion-deployment-patterns`
+   - API 설계/계약/응답 포맷 -> `$ixion-patterns` (REST API Design)
+   - DB 마이그레이션/스키마 변경 -> `$ixion-patterns` (DB Migrations)
+   - Postgres/SQL/인덱스/RLS -> `$ixion-patterns` (Postgres Patterns)
+   - Docker/Dockerfile/컨테이너 -> `$ixion-patterns` (Docker Patterns)
+   - 배포/릴리즈/롤백/CI/CD -> `$ixion-patterns` (Deployment Patterns)
    - E2E/Playwright 테스트/Cypress -> `$ixion-e2e-testing`
    - playwright-cli/브라우저 자동화/웹 스크린샷/폼 자동 입력 -> `$ixion-playwright-cli`
    - 빌드/타입/의존성 에러 -> `$ixion-build-fix`
@@ -164,12 +156,7 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
    - 완료 전 최소 1개 검증 -> `$ixion-verify` (사실상 기본값)
    - 변경 후 회귀/테스트 공백 확인 -> `$ixion-review` (권장)
    - 재사용 규칙/결정이 생김 -> `$ixion-learn` (권장)
-   - bkend 관련이면(필요할 때만):
-     - 초기 설정/연결/개념 -> `$ixion-bkend-quickstart`
-     - 인증/RBAC/RLS -> `$ixion-bkend-auth`
-     - 테이블/CRUD/필터/페이지네이션 -> `$ixion-bkend-data`
-     - 파일 업로드/스토리지 -> `$ixion-bkend-storage`
-     - 예제/트러블슈팅 -> `$ixion-bkend-cookbook`
+   - bkend 관련이면(필요할 때만): `$ixion-bkend`
 5. (질문) “지금 안 물으면 실패”할 질문 1-2개만 포함한다.
 6. 아래 템플릿 중 "주 익션"에 해당하는 1개를 골라, 그대로 붙여넣기 가능한 프롬프트로 완성한다.
 
@@ -573,7 +560,10 @@ $ixion-frontend-ui-ux
 ### API Design (REST 계약/규약)
 
 ```text
-$ixion-api-design
+$ixion-patterns
+
+패턴:
+- REST API Design
 
 목적:
 - <어떤 API를 왜 설계하는지 1-2줄>
@@ -602,7 +592,10 @@ $ixion-api-design
 ### Database Migrations (락/다운타임/롤백)
 
 ```text
-$ixion-database-migrations
+$ixion-patterns
+
+패턴:
+- DB Migrations
 
 목적:
 - <왜 마이그레이션이 필요한지 1-2줄>
@@ -635,7 +628,10 @@ $ixion-database-migrations
 ### Postgres Patterns (쿼리/인덱스/RLS/락)
 
 ```text
-$ixion-postgres-patterns
+$ixion-patterns
+
+패턴:
+- Postgres Patterns
 
 상황:
 - <증상/쿼리/테이블/트래픽 특성>
@@ -656,7 +652,10 @@ $ixion-postgres-patterns
 ### Docker Patterns
 
 ```text
-$ixion-docker-patterns
+$ixion-patterns
+
+패턴:
+- Docker Patterns
 
 목적:
 - <이미지/빌드/런타임에서 해결하려는 문제>
@@ -681,7 +680,10 @@ $ixion-docker-patterns
 ### Deployment Patterns (릴리즈/롤백/가드레일)
 
 ```text
-$ixion-deployment-patterns
+$ixion-patterns
+
+패턴:
+- Deployment Patterns
 
 목적:
 - <왜 배포 패턴/가드레일이 필요한지>
@@ -843,10 +845,7 @@ $ixion-dynamic
 - 파일: <예/아니오> (예: 이미지 업로드)
 
 동반 익션(조건부, 필요할 때만):
-- 초기 설정/연결 -> `$ixion-bkend-quickstart`
-- 인증 -> `$ixion-bkend-auth`
-- 데이터 -> `$ixion-bkend-data`
-- 파일 -> `$ixion-bkend-storage`
+- bkend 통합(연결/MCP/인증/데이터/스토리지) -> `$ixion-bkend`
 - 완료 전 검증 -> `$ixion-verify`
 
 요청:
@@ -870,17 +869,20 @@ $ixion-enterprise
 
 동반 익션(조건부):
 - 계획/합의가 먼저면 `$ixion-plan` 또는 `$ixion-pdca`
-- 배포/롤백 패턴이면 `$ixion-deployment-patterns`
+- 배포/롤백 패턴이면 `$ixion-patterns` (Deployment Patterns)
 - 보안 점검이면 `$ixion-security`
 
 요청:
 - <Enterprise 작업 요청 원문>
 ```
 
-### bkend Quickstart (연결/개념/설정)
+### bkend (연결/개념/설정)
 
 ```text
-$ixion-bkend-quickstart
+$ixion-bkend
+
+영역:
+- Quickstart (연결/MCP)
 
 목적:
 - <bkend를 왜 쓰는지 1-2줄>
