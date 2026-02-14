@@ -17,10 +17,18 @@ metadata:
 ## 리소스 구조(핵심)
 `Organization → Project → Environment(dev/staging/prod)`
 
+## Codex MCP 설정(권장)
+- `~/.codex/config.toml`에 아래를 추가한다.
+  ```toml
+  [mcp_servers.bkend]
+  url = "https://api.bkend.ai/mcp"
+  ```
+- 반영을 위해 Codex 세션 재시작이 필요할 수 있다.
+- 연결 확인(권장): `mcp__bkend__get_context` 호출
+  - 최초 1회 OAuth 인증을 위해 브라우저 로그인이 뜰 수 있다.
+
 ## 주의(중요)
-- Codex 세션에 bkend MCP 서버가 연결돼 있지 않으면 `mcp__bkend__*` 도구는 존재하지 않을 수 있다.
-- 이 경우에도 REST(Service API)로는 통합할 수 있으니, “클라이언트 코드 + 헤더 규칙”을 우선 고정한다.
+- `mcp__bkend__*` 도구가 없거나 인증이 막히면, REST(Service API) 통합으로도 진행 가능하다(“클라이언트 코드 + 헤더 규칙” 우선 고정).
 
 ## 다음(추천)
 - Dynamic 프리셋으로 진행: `$ixion-dynamic`
-
