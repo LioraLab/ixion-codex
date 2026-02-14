@@ -37,7 +37,7 @@ Web | App | Software | CV | Shopify 중 1개를 고른다.
 기본 흐름(추천):
 1. 범위가 넓거나 계약이 중요한 기능이면 `$ixion-pdca`로 Plan/Design을 먼저 만든다.
 2. 구현은 `$ixion-orchestrator`로 탐색→분할→최소 변경으로 진행한다.
-3. 완료 선언 전 `$ixion-verify`로 테스트/빌드/린트 중 최소 1개를 실행한다.
+3. 완료 선언 전 `$ixion-verify`로 빠른 검증 2개(없으면 1개)를 실행한다.
 4. 회귀/테스트 공백은 `$ixion-review`로 잡는다.
 5. 인증/인가/입력 검증/파일 업로드/외부 호출이 있으면 `$ixion-security`를 반드시 끼운다.
 6. 작업에서 재사용될 규칙이 생기면 `$ixion-learn`으로 자산화한다.
@@ -71,7 +71,7 @@ Web | App | Software | CV | Shopify 중 1개를 고른다.
 기본 흐름(추천):
 1. 요구사항이 애매하면 `$ixion-orchestrator`로 탐색부터 하고, 지금 안 물으면 실패할 질문만 1-2개 한다.
 2. 기능이 크면 `$ixion-pdca`로 화면 흐름/상태/에러/권한을 Design에 고정한다.
-3. 구현 후 `$ixion-verify`로 최소 1개 검증을 실행한다.
+3. 구현 후 `$ixion-verify`로 빠른 검증 2개(없으면 1개)를 실행한다.
 4. 변경이 민감하면 `$ixion-review`로 회귀/테스트 공백을 잡는다.
 5. 입력/딥링크/웹뷰/외부 URL/파일 처리 같은 공격면이 있으면 `$ixion-security`를 끼운다.
 
@@ -106,7 +106,7 @@ Web | App | Software | CV | Shopify 중 1개를 고른다.
 기본 흐름(추천):
 1. 계약(입출력, CLI 옵션, 공개 API)이 바뀌면 `$ixion-tdd`로 테스트를 먼저 고정한다.
 2. 구현은 `$ixion-orchestrator`로 최소 변경으로 진행한다.
-3. `$ixion-verify`로 테스트/빌드/린트 중 최소 1개를 실행한다.
+3. `$ixion-verify`로 빠른 검증 2개(없으면 1개)를 실행한다.
 4. `$ixion-review`로 회귀/테스트 공백을 확인한다.
 5. 릴리즈가 걸리면 `.codex/.ixion/decisions.md`에 버전/호환성 결정을 짧게 남긴다.
 
@@ -138,7 +138,7 @@ Web | App | Software | CV | Shopify 중 1개를 고른다.
 1. 목표가 연구용인지 제품용인지가 결과에 큰 영향을 주면, 그 1가지만 먼저 확인한다.
 2. 코드베이스를 탐색해 현재 구조와 실행 방법을 파악한다(환경 파일, 엔트리포인트, 스크립트).
 3. 변경은 “전처리/모델/후처리/IO” 경계가 섞이지 않게 최소 범위로 한다.
-4. 완료 전 `$ixion-verify`로 최소 1개 검증을 실행한다.
+4. 완료 전 `$ixion-verify`로 빠른 검증 2개(없으면 1개)를 실행한다.
 5. 재사용될 전처리/후처리 규칙은 `$ixion-learn`으로 자산화한다.
 
 체크리스트(최소):
@@ -184,7 +184,7 @@ Web | App | Software | CV | Shopify 중 1개를 고른다.
 2. 테마 구조를 먼저 확인한다(`sections/`, `templates/`, `snippets/`, `assets/`, `config/`).
 3. 변경이 크면 `$ixion-pdca`로 화면/섹션 스펙과 설정(schema)을 Design에 고정한다.
 4. 구현은 `$ixion-orchestrator`로 최소 변경으로 진행한다.
-5. 완료 전 `$ixion-verify`로 최소 1개 검증을 실행한다.
+5. 완료 전 `$ixion-verify`로 빠른 검증 2개(없으면 1개)를 실행한다.
 6. (필수) 작업 종료 시 노트북에 “Memory Capture” 노트를 남긴다.
 
 체크리스트(최소):

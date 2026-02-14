@@ -39,7 +39,7 @@ metadata:
 ## 연결(권장)
 - 큰 기능이면 먼저 `$ixion-pdca`로 Plan/Design을 고정한다.
 - 실제 구현은 `$ixion-orchestrator` 또는 `$ixion-domains`(Web/App/Software/CV/Shopify)로 진행한다.
-- 완료 선언 전 `$ixion-verify`로 최소 1개 검증을 실행한다.
+- 코드/설정 변경이면 완료 선언 전 `$ixion-verify`로 빠른 검증 2개(없으면 1개)를 실행한다.
 
 ---
 

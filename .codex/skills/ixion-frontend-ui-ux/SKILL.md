@@ -29,8 +29,8 @@ metadata:
    - 상태: 로딩/에러/빈상태
    - 접근성: label/aria, 키보드, 포커스, 대비
 3. 구현(작은 diff 우선)
-4. 검증(최소 1개)
-   - `npm test` 또는 `npm run build` 또는 `npm run lint` 또는 `npx tsc --noEmit`
+4. 검증(기본 2개, 없으면 1개)
+   - 예: `npm test` + `npm run lint` (또는 `npm run build`, `npx tsc --noEmit`)
 5. 리뷰(권장)
    - 변경이 넓으면 `$ixion-review`로 회귀/테스트 공백 점검
 
@@ -38,4 +38,3 @@ metadata:
 - 변경 요약: 컴포넌트/페이지 단위
 - UX 체크: 반응형/상태/접근성 항목 PASS 여부
 - 검증: 실행한 커맨드와 결과 요약
-

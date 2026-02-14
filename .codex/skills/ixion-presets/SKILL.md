@@ -34,7 +34,7 @@ Starter | Dynamic | Enterprise 중 1개를 고른다.
 가드레일(추천):
 - 과한 스택/과한 설계 금지(완주 우선)
 - 지금 안 물으면 실패할 질문만 1-2개
-- 완료 전 최소 1개 검증(`$ixion-verify`)
+- 코드/설정 변경이면 완료 전 `$ixion-verify` (기본 2개, 없으면 1개)
 
 같이 쓰기(권장):
 - 웹이면: `$ixion-domains` (Domain: Web)
@@ -51,7 +51,7 @@ Starter | Dynamic | Enterprise 중 1개를 고른다.
 같이 쓰기(권장):
 - bkend 통합(개념/연결/MCP/인증/데이터/스토리지/예제): `$ixion-bkend`
 - (조건부) 웹 UI/풀스택이면: `$ixion-domains` (Domain: Web)
-- 완료 전 검증: `$ixion-verify`
+- 완료 전 검증: `$ixion-verify` (기본 2개, 없으면 1개)
 - (조건부) 인증/인가/업로드/외부 호출이 있으면: `$ixion-security`
 
 ---
@@ -65,7 +65,7 @@ Starter | Dynamic | Enterprise 중 1개를 고른다.
 - 계획/합의가 먼저면: `$ixion-pdca` (Plan 작성 모드)
 - 패턴/가드레일: `$ixion-patterns` (Deployment/DB/API 등 필요한 것만)
 - 보안 점검: `$ixion-security`
-- 완료 전 검증: `$ixion-verify`
+- 완료 전 검증: `$ixion-verify` (기본 2개, 없으면 1개)
 
 ---
 
