@@ -22,6 +22,7 @@ metadata:
 ## 라우팅(주 익션 1개 + 동반 익션 0-5개)
 
 주 익션(Primary) 선택:
+- 개발 파이프라인/뭐부터/순서/phase → `$ixion-development-pipeline`
 - 빌드/타입/의존성 에러 → `$ixion-build-fix`
 - 코드 위치/흐름 파악(읽기 전용) → `$ixion-deepsearch`
 - 원인 분석(코드 변경 없이) → `$ixion-analyze`
@@ -34,8 +35,12 @@ metadata:
 - 배포/릴리즈/롤백/CI/CD → `$ixion-deployment-patterns`
 - E2E/Playwright 테스트/Cypress → `$ixion-e2e-testing`
 - 브라우저 자동화/스크린샷/웹 데이터 추출(playwright-cli) → `$ixion-playwright-cli`
+- Zero Script QA(로그 기반 검증) → `$ixion-zero-script-qa`
 - Git 작업(커밋/리베이스/브랜치) → `$ixion-git-master`
 - 리서치(내부 코드 + 외부 문서) → `$ixion-research`
+- bkend/bkend.ai/BaaS 기반 풀스택 → `$ixion-dynamic` (필요 시 `$ixion-bkend-quickstart|auth|data|storage` 동반)
+- 엔터프라이즈(마이크로서비스/k8s/terraform) → `$ixion-enterprise`
+- 초보/정적 웹(Starter 레벨) → `$ixion-starter`
 - Shopify 테마 → `$ixion-shopify`
 - 웹/앱/소프트웨어/CV → `$ixion-web` / `$ixion-app` / `$ixion-software` / `$ixion-cv`
 - 구현/버그/리팩터링(넓거나 불확실) → `$ixion-orchestrator`

@@ -66,6 +66,12 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
   - 새 프로젝트에서 “뭐부터/순서”가 애매할 때 9-Phase로 다음 단계를 안내.
 - Zero Script QA(로그 기반 검증): `$ixion-zero-script-qa`
   - 테스트 코드 없이 로그/모니터링으로 빠르게 QA 근거를 만들 때.
+- 레벨 프리셋(선택): `$ixion-starter`, `$ixion-dynamic`, `$ixion-enterprise`
+  - Starter: 초보/정적 웹 중심
+  - Dynamic: bkend.ai(BaaS)로 운영 최소 풀스택
+  - Enterprise: MSA/인프라/운영 전제
+- bkend 세부(선택): `$ixion-bkend-quickstart`, `$ixion-bkend-auth|data|storage|cookbook`
+  - bkend 통합이 핵심인 작업에서만 동반 익션으로 붙인다(프롬프트 과다 분량 방지).
 - bkit 맵/탐색(선택): `$ixion-bkit-system`
   - bkit 플러그인 내부(templates/skills/agents/hooks/scripts)를 ixion 관점에서 빠르게 찾을 때.
 - 역할 기반 엔트리포인트(옵트인): `$ixion-agent-*`
@@ -105,6 +111,9 @@ description: "사용자 요청을 ixion 전체 기능(도메인 프리셋 + 오�
 1. (요청 분류) 아래 중 하나로 "주 익션(Primary)"를 1개 고른다.
    - 개발 파이프라인/phase/뭐부터/순서 -> `$ixion-development-pipeline`
    - zero script qa/로그 기반 QA -> `$ixion-zero-script-qa`
+   - starter/초보/비개발자 -> `$ixion-starter`
+   - bkend/bkend.ai/BaaS -> `$ixion-dynamic`
+   - enterprise/microservices/k8s/terraform -> `$ixion-enterprise`
    - 계획/요구사항/합의 -> `$ixion-plan`
    - 원인 분석(코드 변경 없이) -> `$ixion-analyze`
    - AGENTS.md 생성/갱신 -> `$ixion-deepinit`

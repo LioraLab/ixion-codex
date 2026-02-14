@@ -75,7 +75,8 @@ bkit + oh-my-claudecode + everything-claude-code의 장점을 Codex 방식(스�
 - “phase-7/phase 7/seo/security/검색 최적화” -> `$ixion-pipeline-phase-7-seo-security`
 - “phase-8/phase 8/gap analysis/아키텍처 리뷰/컨벤션 리뷰” -> `$ixion-pipeline-phase-8-review`
 - “phase-9/phase 9/deployment/배포 준비” -> `$ixion-pipeline-phase-9-deployment`
-- “starter/정적 웹/포트폴리오/초보” -> `$ixion-starter`
+- “starter/초보/비개발자” -> `$ixion-starter`
+- “정적 웹/포트폴리오/랜딩페이지” -> `$ixion-web` (초보/비개발자면 `$ixion-starter`도 선택)
 - “bkend/bkend.ai/BaaS” -> `$ixion-dynamic`
 - “enterprise/엔터프라이즈/microservices/kubernetes/terraform” -> `$ixion-enterprise`
 - “plan/계획/요구사항/스펙/범위 정리/consensus/ralplan” -> `$ixion-plan`
