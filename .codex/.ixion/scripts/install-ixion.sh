@@ -11,7 +11,9 @@ Usage:
 Options:
   --mode copy|symlink        Install skills by copying (default) or symlinking each skill directory.
   --plugins none|copy        Install plugins (default: none). "copy" vendors plugins into target.
-  --force                    Overwrite managed paths in target (.codex/skills and .codex/.ixion/{scripts,templates,archives,README/SKILL-MAP/PLUGINS}).
+  --force                    Merge/overwrite matching managed entries in target:
+                            - .codex/skills: only same-name skill directories or links are replaced
+                            - .codex/.ixion/{scripts,templates,archives,README/SKILL-MAP/PLUGINS}: only same-name items are replaced
   --include-decisions        Copy ixion-codex's .codex/.ixion/decisions.md into target (default: create a minimal file if missing).
   --dry-run                  Print actions without changing files.
   -h, --help                 Show this help.
@@ -114,6 +116,54 @@ copy_dir() {
   run cp -a "$src" "$dst"
 }
 
+copy_dir_merge() {
+  local src="$1" dst="$2"
+  [[ -d "$src" ]] || die "missing dir: $src"
+  ensure_dir "$dst"
+  while IFS= read -r -d '' item; do
+    local base src_item dst_item
+    base="$(basename "$item")"
+    src_item="$src/$base"
+    dst_item="$dst/$base"
+    if [[ -e "$dst_item" || -L "$dst_item" ]]; then
+      if [[ "$FORCE" -eq 1 ]]; then
+        remove_path "$dst_item"
+      fi
+    fi
+    if [[ -d "$src_item" ]]; then
+      ensure_dir "$dst_item"
+      run cp -a "$src_item/." "$dst_item/"
+    else
+      run cp -a "$src_item" "$dst_item"
+    fi
+  done < <(cd "$src" && find . -mindepth 1 -maxdepth 1 -print0)
+}
+
+sync_skills() {
+  local mode="$1"
+  local action="copy"
+  if [[ "$mode" == "symlink" ]]; then
+    action="symlink"
+  fi
+  for d in "$SOURCE_SKILLS"/*; do
+    [[ -d "$d" ]] || continue
+    local name target
+    name="$(basename "$d")"
+    target="$TARGET_SKILLS/$name"
+    if [[ -e "$target" || -L "$target" ]]; then
+      if [[ "$FORCE" -eq 0 ]]; then
+        die "target skill already exists: $target (use --force to overwrite)"
+      fi
+      remove_path "$target"
+    fi
+    if [[ "$action" == "symlink" ]]; then
+      run ln -s "$d" "$target"
+    else
+      run cp -a "$d" "$target"
+    fi
+  done
+}
+
 write_minimal_decisions() {
   local path="$1"
   if [[ -f "$path" ]]; then
@@ -145,24 +195,20 @@ ensure_dir "$TARGET_IXION"
 # 1) Install skills
 if [[ -e "$TARGET_SKILLS" || -L "$TARGET_SKILLS" ]]; then
   if [[ "$FORCE" -eq 1 ]]; then
-    log "[ixion-install] replace: $TARGET_SKILLS"
-    remove_path "$TARGET_SKILLS"
+    ensure_dir "$TARGET_SKILLS"
   else
-    die "target skills already exist: $TARGET_SKILLS (use --force to overwrite)"
+    die "target skills already exist: $TARGET_SKILLS (use --force to merge and overwrite matching skill names)"
   fi
+else
+  ensure_dir "$TARGET_SKILLS"
 fi
 
 if [[ "$MODE" == "copy" ]]; then
-  log "[ixion-install] copy skills -> $TARGET_SKILLS"
-  copy_dir "$SOURCE_SKILLS" "$TARGET_SKILLS"
+  log "[ixion-install] copy matching skills -> $TARGET_SKILLS"
+  sync_skills "copy"
 else
   log "[ixion-install] symlink skills -> $TARGET_SKILLS"
-  ensure_dir "$TARGET_SKILLS"
-  for d in "$SOURCE_SKILLS"/*; do
-    [[ -d "$d" ]] || continue
-    name="$(basename "$d")"
-    run ln -s "$d" "$TARGET_SKILLS/$name"
-  done
+  sync_skills "symlink"
 fi
 
 # 2) Install ixion runtime assets (avoid copying project outputs)
@@ -172,16 +218,9 @@ ensure_dir "$TARGET_IXION/archives"
 ensure_dir "$TARGET_IXION/docs"
 ensure_dir "$TARGET_IXION/state"
 
-if [[ "$FORCE" -eq 1 ]]; then
-  log "[ixion-install] replace ixion managed paths (scripts/templates/archives + top docs)"
-  remove_path "$TARGET_IXION/scripts"
-  remove_path "$TARGET_IXION/templates"
-  remove_path "$TARGET_IXION/archives"
-fi
-
-copy_dir "$SOURCE_IXION/scripts" "$TARGET_IXION/scripts"
-copy_dir "$SOURCE_IXION/templates" "$TARGET_IXION/templates"
-copy_dir "$SOURCE_IXION/archives" "$TARGET_IXION/archives"
+copy_dir_merge "$SOURCE_IXION/scripts" "$TARGET_IXION/scripts"
+copy_dir_merge "$SOURCE_IXION/templates" "$TARGET_IXION/templates"
+copy_dir_merge "$SOURCE_IXION/archives" "$TARGET_IXION/archives"
 copy_file "$SOURCE_IXION/README.md" "$TARGET_IXION/README.md"
 copy_file "$SOURCE_IXION/SKILL-MAP.md" "$TARGET_IXION/SKILL-MAP.md"
 copy_file "$SOURCE_IXION/PLUGINS.md" "$TARGET_IXION/PLUGINS.md"
@@ -208,13 +247,13 @@ ensure_dir "$TARGET_IXION/docs/decisions"
 if [[ "$PLUGINS" == "copy" ]]; then
   if [[ -e "$TARGET_IXION/plugins" || -L "$TARGET_IXION/plugins" ]]; then
     if [[ "$FORCE" -eq 1 ]]; then
-      remove_path "$TARGET_IXION/plugins"
+      copy_dir_merge "$SOURCE_IXION/plugins" "$TARGET_IXION/plugins"
     else
       die "target plugins already exist: $TARGET_IXION/plugins (use --force to overwrite)"
     fi
+  else
+    copy_dir_merge "$SOURCE_IXION/plugins" "$TARGET_IXION/plugins"
   fi
-  log "[ixion-install] copy plugins -> $TARGET_IXION/plugins"
-  copy_dir "$SOURCE_IXION/plugins" "$TARGET_IXION/plugins"
 
   # Best-effort sync to ensure templates match plugin snapshot (requires bkit present).
   if [[ "$DRY_RUN" -eq 1 ]]; then
@@ -227,4 +266,3 @@ else
 fi
 
 log "[ixion-install] OK"
-
